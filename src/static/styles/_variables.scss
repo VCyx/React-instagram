@@ -1,0 +1,34 @@
+//$background-color: ;
+$font-family: 'Rubik', sans-serif;
+//$background-gradient-color: linear-gradient(45deg, #FFF, #C4C4C4);
+$background-highlight-color: #D2D2D2;
+//$paper-color: ;
+//$primary-color: ;
+//$primary-color-lighter: ;
+//$primary-color-darker: ;
+
+$accent-color: #B91C1C;
+$secondary-color: rgb(240, 185, 11);
+$dark-color: #000;
+$disabled-color: #C4C4C4;
+$error-color: #B91C1C;
+$success-color: #20DF9C;
+$light-text-color: #FFF;
+$dark-text-color: #000;
+
+$text-color: #000;
+
+$gap-default: 16px;
+
+$border-radius-default: 10px;
+$border-color-default: #333131;
+
+$max-content-width: 1280px;
+$narrow-content-width: 1024px;
+
+$tablet: 902;
+$desktop: 1280;
+
+$lt-lg: screen and (max-width: #{$desktop - 1}px,);
+$lt-md: screen and (max-width: #{$tablet}px,);
+$gt-md: screen and (min-width: #{$tablet + 1}px,);
