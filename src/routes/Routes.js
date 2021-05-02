@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import Login from "../page/Login/Login";
 import Page404 from "../page/404/Page404";
 import Main from "../page/Main/Main";
+import Profile from "../page/Profile/Profile";
 
 const Routes = () => {
   return (
@@ -9,6 +10,7 @@ const Routes = () => {
       <Switch>
         <Route exact path="/" component={Main} />
         <Route exact path="/login" component={Login} />
+        <Route exact path='/:name' component={Profile} />
         <Route path="*" component={Page404} />
       </Switch>
     </>

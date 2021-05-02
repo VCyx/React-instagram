@@ -1,0 +1,37 @@
+@import "src/static/styles/main.scss";
+
+.container{
+  font-family: $font-family;
+  max-width: $max-content-width;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  .user{
+    margin-left: 79px;
+    display: flex;
+    .status{
+      margin-left: 80px;
+      max-width: 330px;
+      font-size: 12px;
+      align-self: flex-end;
+      text-align: left;
+      .userName{
+        font-size: 18px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .icon{
+    margin: 30px 0;
+  }
+  .lineBlue{
+    @include line(312px,#3772FF,30px)
+  }
+  .lineLightBlue{
+    @include line(312px,#00CECB,30px)
+  }
+  .lineGrey{
+    @include line(277px,#ABB2C1,30px)
+  }
+}

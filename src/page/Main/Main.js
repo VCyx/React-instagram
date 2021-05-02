@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "./Main.module.scss";
 import Posts from "../../components/Posts/Posts";
+import {like} from "../../assets/svg";
+import User from "../../components/User/User";
 
 const posts = [
   {
     id: 1,
     avatar: "../../assets/img/post1/avatar.png",
-    name: "karambol_a",
+    name: "karambol_first",
     picture: "",
     likes: 125,
     comments: {
@@ -17,7 +19,7 @@ const posts = [
   {
     id: 2,
     avatar: "../../assets/img/post1/avatar.png",
-    name: "karambol_a",
+    name: "karambol_second",
     picture: "",
     likes: 125,
     comments: {
@@ -33,7 +35,21 @@ const Main = () => {
       <div>
         <Posts posts={posts} />
       </div>
-      <aside>World</aside>
+      <aside>
+        <h1>World</h1>
+
+        {/*Перехід на конкретного юзера, заглушка*/}
+        {posts.map((el) => (
+          <User
+            key={el.id}
+            avatar={el.avatar}
+            name={el.name}
+          />
+        ))}
+
+        {/**/}
+
+      </aside>
     </div>
   );
 };
