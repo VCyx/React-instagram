@@ -1,0 +1,7 @@
+@mixin line($width, $background, $marginTop){
+  width: $width;
+  height: 2px;
+  background: $background;
+  border-radius: 30px;
+  margin-top: $marginTop;
+}
