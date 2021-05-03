@@ -1,8 +1,9 @@
 import React from "react";
 import styles from "./Main.module.scss";
 import Posts from "../../components/Posts/Posts";
-import {like} from "../../assets/svg";
+import {like, logo} from "../../assets/svg";
 import User from "../../components/User/User";
+import { useSelector} from "react-redux";
 
 const posts = [
   {
@@ -30,6 +31,9 @@ const posts = [
 ];
 
 const Main = () => {
+   // всі юзери
+  const users = useSelector(state => state.userReducer.users.data);
+
   return (
     <div className={styles.container}>
       <div>
@@ -39,14 +43,13 @@ const Main = () => {
         <h1>World</h1>
 
         {/*Перехід на конкретного юзера, заглушка*/}
-        {posts.map((el) => (
+        {users.map((user) => (
           <User
-            key={el.id}
-            avatar={el.avatar}
-            name={el.name}
+            key={user.id}
+            avatar={user.img}
+            name={user.name}
           />
         ))}
-
         {/**/}
 
       </aside>
