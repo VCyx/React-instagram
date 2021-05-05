@@ -10,20 +10,44 @@
   .user{
     margin-left: 79px;
     display: flex;
+    .avatar{
+      width: 100px;
+      height: 100px;
+    }
     .status{
       margin-left: 80px;
-      max-width: 330px;
+      max-width: 350px;
       font-size: 12px;
       align-self: flex-end;
       text-align: left;
-      .userName{
-        font-size: 18px;
-        margin-bottom: 20px;
+      .userInfo {
+        display: flex;
+        .btnSign{
+          width: 152px;
+          height: 27px;
+          border-radius: 30px;
+          padding: 5px 28px;
+          color: white;
+          background: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
+          text-align: center;
+          cursor: pointer;
+        }
+        .btnSignIn{
+
+        }
+        .userName {
+          font-size: 18px;
+          margin-bottom: 20px;
+          margin-right: 10px;
+        }
       }
     }
   }
   .icon{
     margin: 30px 0;
+  }
+  .blockLine{
+    display: flex;
   }
   .lineBlue{
     @include line(312px,#3772FF,30px)
@@ -37,14 +61,125 @@
   .galleryPosts{
     margin-top: 30px;
     display: grid;
-    grid-template-columns: repeat(3,max(278px));
-    //grid-template-columns: repeat(3, 278px);
+    grid-template-columns: repeat(3,max(277px));
     grid-gap: 34px;
-
   }
   .galleryImage{
     border-radius: 30px;
-    width: 278px;
-    height: 278px;
+    width: 277px;
+    height: 277px;
+  }
+  .galleryImage:last-child{
+    margin-bottom: 31px;
+  }
+}
+
+@media (max-width:1024px) {
+  .container{
+    max-width: 768px;
+    align-items: center;
+    .user{
+      align-self: flex-start;
+      margin-left: 60px;
+      .status{
+        margin-left: 20px;
+        align-self: center;
+        .userName{
+          font-size: 12px;
+        }
+      }
+    }
+    .icon{
+      align-self: flex-start;
+      margin-bottom: 27px;
+      margin-left: 60px;
+    }
+    .lineBlue{
+      @include line(225px,#3772FF,30px)
+    }
+    .lineLightBlue{
+      @include line(225px,#00CECB,30px)
+    }
+    .lineGrey{
+      @include line(200px,#ABB2C1,30px)
+    }
+    .galleryPosts{
+      margin-top: 32px;
+      grid-template-columns: repeat(2, max(277px));
+      align-items: center;
+    }
+  }
+}
+@media (max-width: 768px) {
+  .container{
+    max-width: 480px;
+    .user{
+      align-self: flex-start;
+      margin-left: 20px;
+      .status{
+        margin-left: 8px;
+        font-size: 10px;
+      }
+    }
+    .icon{
+      align-self: flex-start;
+      margin-bottom: 27px;
+      margin-left: 20px;
+    }
+    .lineBlue{
+      @include line(160px,#3772FF,20px)
+    }
+    .lineLightBlue{
+      @include line(160px,#00CECB,20px)
+    }
+    .lineGrey{
+      @include line(130px,#ABB2C1,20px)
+    }
+    .galleryPosts{
+      margin-top: 36px;
+      grid-template-columns: repeat(1, max(277px));
+      align-items: center;
+    }
+  }
+}
+@media (max-width: 480px) {
+  .container{
+    width: 320px;
+    .user{
+      margin-bottom: 10px;
+      .avatar{
+        width: 22px;
+        height: 22px;
+      }
+      .status{
+        margin-left: 11px;
+        .userName{
+          margin-bottom: 10px;
+        }
+      }
+    }
+    .icon{
+      margin-bottom: 17px;
+      .iconSize >svg{
+        width: 38px;
+        height: 30px;
+
+      }
+    }
+    .lineBlue{
+      @include line(94px,#3772FF,10px)
+    }
+    .lineLightBlue{
+      @include line(94px,#00CECB,10px)
+    }
+    .lineGrey{
+      @include line(83px,#ABB2C1,10px)
+    }
+    .galleryPosts{
+      margin-top: 16px;
+      grid-template-columns: repeat(1, max(277px));
+      align-items: center;
+      grid-gap: 16px;
+    }
   }
 }

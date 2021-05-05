@@ -5,6 +5,7 @@ import testAva from '../../assets/img/post1/avatar.png'
 import {withRouter} from 'react-router'
 import {useDispatch, useSelector} from "react-redux";
 import {getPostsUser} from "../../@redux/users/operation";
+import Button from "../../components/Button/Button";
 
 
 const Profile = ({location: {state: {name, avatar, postsUserId}}}) => {
@@ -16,21 +17,28 @@ const Profile = ({location: {state: {name, avatar, postsUserId}}}) => {
     dispatch(getPostsUser(postsUserId));
   }, [dispatch,postsUserId]);
 
-  const test = useSelector(state => state.userReducer.users.posts)
+  const test = useSelector(state => state.userReducer.users.posts);
+
+  const toggleStatus = (e) =>{
+  //  console.log(e.target.className = 'btnSignIn')
+  };
 
   return (
     <div className={styles.container}>
       <div className={styles.icon}>
-        <Icon type='logo'/>
+        <Icon className={styles.iconSize} type='logo'/>
       </div>
       <div className={styles.user}>
-        <img src={testAva} alt="" width='100px' height='100px'/>
+        <img className={styles.avatar} src={testAva} alt="logo"/>
         <div className={styles.status}>
-          <p className={styles.userName}>{name}</p>
+          <div className={styles.userInfo}>
+            <p className={styles.userName}>{name}</p>
+            <Button onClick={toggleStatus} className={styles.btnSign}>Підписатися</Button> {/* !!! статус потрібно брати на сервері*/}
+          </div>
           <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, dolores.</span>
         </div>
       </div>
-      <div style={{display: 'flex'}}>
+      <div className={styles.blockLine}>
         <div className={styles.lineBlue}/>
         <div className={styles.lineLightBlue}/>
         <div className={styles.lineGrey}/>
