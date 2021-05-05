@@ -34,4 +34,17 @@
   .lineGrey{
     @include line(277px,#ABB2C1,30px)
   }
+  .galleryPosts{
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(3,max(278px));
+    //grid-template-columns: repeat(3, 278px);
+    grid-gap: 34px;
+
+  }
+  .galleryImage{
+    border-radius: 30px;
+    width: 278px;
+    height: 278px;
+  }
 }

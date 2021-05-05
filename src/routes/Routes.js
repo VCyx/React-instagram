@@ -7,6 +7,7 @@ import Profile from "../page/Profile/Profile";
 const Routes = () => {
   return (
     <>
+
       <Switch>
         <Route exact path="/" component={Main} />
         <Route path="/login" component={Login} />

@@ -1,11 +1,17 @@
 import axios from "axios";
-import {getCardSuccess, getRequest} from "./action";
+import {getUserSuccess, getRequest, getUserPosts} from "./action";
 
-const getUser = () => (dispatch) => {
+const URL_GET_USER = `http://176.105.100.114:7000/api/post`; // змінити коли настроїть сервак під юзерів
+const URL_USER_POSTS = `http://176.105.100.114:7000/api/post/user/`; // змінити коли настроїть сервак під юзерів
+
+export const getUser = () => (dispatch) => {
   dispatch(getRequest());
-  axios(`http://176.105.100.114:7000/api/post`).then(res=>{
-    dispatch(getCardSuccess(res.data.rows));
+  axios(URL_GET_USER).then(res => {
+    dispatch(getUserSuccess(res.data.rows));
   })
 };
 
-export default getUser;
+export const getPostsUser = (id) => (dispatch) => {
+  axios(URL_USER_POSTS + id)
+    .then(res => dispatch(getUserPosts(res.data)))
+};
