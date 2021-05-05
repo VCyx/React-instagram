@@ -31,13 +31,13 @@ const posts = [
 ];
 
 const Main = () => {
-   // всі юзери
+  // всі юзери
   const users = useSelector(state => state.userReducer.users.data);
 
   return (
     <div className={styles.container}>
       <div>
-        <Posts posts={posts} />
+        <Posts posts={posts}/>
       </div>
       <aside>
         <h1>World</h1>
@@ -48,9 +48,10 @@ const Main = () => {
             key={user.id}
             avatar={user.img}
             name={user.name}
+            postsUserId={user.id} // витягуємо по ід, всі пости юзера
           />
         ))}
-        {/**/}
+
 
       </aside>
     </div>

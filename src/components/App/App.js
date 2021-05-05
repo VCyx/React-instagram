@@ -3,7 +3,7 @@ import "./App.css";
 import "../../static/styles/main.scss";
 import Routes from "../../routes/Routes";
 import {useDispatch} from 'react-redux'
-import getUser from "../../@redux/users/operation";
+import {getUser} from "../../@redux/users/operation";
 
 
 function App() {
@@ -13,10 +13,9 @@ function App() {
     dispatch(getUser());
   }, [dispatch]);
 
-
   return (
     <div className="App">
-      <Routes />
+      <Routes/>
     </div>
   );
 }

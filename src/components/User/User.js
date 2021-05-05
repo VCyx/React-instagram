@@ -1,20 +1,20 @@
 import React from "react";
 import {withRouter} from 'react-router-dom'
 
-const User = ({name,avatar,history}) =>{
- const openUserProfile = () =>{
-    history.push(`/${name}`,{
+const User = ({name, avatar, history, postsUserId}) => {
+  const openUserProfile = () => {
+    history.push(`/${postsUserId}`, { // змінити на нейм. тест
       name,
-      avatar
-   })
+      avatar,
+      postsUserId
+    })
   };
-
-  return(
+  return (
     <div>
       <ul>
-          <li style={{listStyle: 'none', cursor: 'pointer'}} onClick={openUserProfile}>
-            {name}
-          </li>
+        <li style={{listStyle: 'none', cursor: 'pointer'}} onClick={openUserProfile}>
+          {name}
+        </li>
       </ul>
     </div>
   )
