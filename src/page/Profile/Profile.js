@@ -21,16 +21,16 @@ const Profile = ({location: {state: {name, avatar, postsUserId}}}) => {
   return (
     <div className={styles.container}>
       <div className={styles.icon}>
-        <Icon type='logo'/>
+        <Icon className={styles.iconSize} type='logo'/>
       </div>
       <div className={styles.user}>
-        <img src={testAva} alt="" width='100px' height='100px'/>
+        <img className={styles.avatar} src={testAva} alt="logo"/>
         <div className={styles.status}>
           <p className={styles.userName}>{name}</p>
           <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, dolores.</span>
         </div>
       </div>
-      <div style={{display: 'flex'}}>
+      <div className={styles.blockLine}>
         <div className={styles.lineBlue}/>
         <div className={styles.lineLightBlue}/>
         <div className={styles.lineGrey}/>
