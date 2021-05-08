@@ -15,12 +15,12 @@ const Profile = ({location: {state: {name, avatar, postsUserId}}}) => {
 
   useEffect(() => {
     dispatch(getPostsUser(postsUserId));
-  }, [dispatch,postsUserId]);
+  }, [dispatch, postsUserId]);
 
   const test = useSelector(state => state.userReducer.users.posts);
-
-  const toggleStatus = (e) =>{
-  //  console.log(e.target.className = 'btnSignIn')
+  const toggleStatus = (e) => {
+    e.target.classList.contains(styles['btnSignIn']) ? e.target.textContent = 'Підписатися' : e.target.textContent = 'Відписатися';
+    e.target.classList.toggle(styles['btnSignIn']);
   };
 
   return (
@@ -33,9 +33,11 @@ const Profile = ({location: {state: {name, avatar, postsUserId}}}) => {
         <div className={styles.status}>
           <div className={styles.userInfo}>
             <p className={styles.userName}>{name}</p>
-            <Button onClick={toggleStatus} className={styles.btnSign}>Підписатися</Button> {/* !!! статус потрібно брати на сервері*/}
+            <Button onClick={toggleStatus}
+                    className={styles.btnSign}>Підписатися</Button> {/* !!! статус потрібно брати на сервері*/}
           </div>
-          <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, dolores.</span>
+          <p className={styles.userStatus}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem,
+            dolores.</p> {/* Брати з бази даних*/}
         </div>
       </div>
       <div className={styles.blockLine}>
@@ -45,7 +47,15 @@ const Profile = ({location: {state: {name, avatar, postsUserId}}}) => {
       </div>
       <div className={styles.galleryPosts}>
         {test.map((post) => (
-          <img className={styles.galleryImage} key={post.id} src={URL + post.img} alt="logo"/>
+          <div className={styles.galleryHover}>
+            <div className={styles.imageHover}>
+              <Icon type='like' color='white'/>
+                 <span className={styles.iconCommentCount}>22</span>  {/*Додати з сервера*/}
+              <Icon className={styles.iconComment} type='comment' color='white'/>
+                <span className={styles.iconCommentCount}>15</span>  {/*Додати з сервера*/}
+            </div>
+            <img className={styles.galleryImage} key={post.id} src={URL + post.img} alt="logo"/>
+          </div>
         ))}
       </div>
     </div>

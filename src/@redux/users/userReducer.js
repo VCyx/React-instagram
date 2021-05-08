@@ -5,7 +5,7 @@ const initialState ={
         data: [],
         isLoading: true,
         posts: [],
-    }
+    },
 };
 
 const userReducer = (state = initialState, action) => {
