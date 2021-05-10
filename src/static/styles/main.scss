@@ -1,0 +1,57 @@
+@import "variables";
+@import "fonts";
+@import "mixin";
+
+html,
+body {
+  margin: 0;
+  font-family: $font-family;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  font-family: $font-family;
+  background-color: $background-color;
+  letter-spacing: 0;
+  line-height: normal;
+  color: $text-color;
+
+  input {
+    color: $text-color;
+  }
+
+}
+
+button {
+all: unset;
+}
+
+div,
+div:before,
+div:after {
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+}
+
+p {
+margin-block-start: 0;
+margin-block-end: 0;
+}
+
+a {
+text-decoration: none;
+}
+
+img {
+pointer-events: none;
+}
