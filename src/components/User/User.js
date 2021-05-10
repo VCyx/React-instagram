@@ -1,5 +1,6 @@
 import React from "react";
 import {withRouter} from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const User = ({name, avatar, history, postsUserId}) => {
   const openUserProfile = () => {
@@ -18,6 +19,12 @@ const User = ({name, avatar, history, postsUserId}) => {
       </ul>
     </div>
   )
+};
+
+User.propTypes = {
+  name: PropTypes.string,
+  avatar: PropTypes.string,
+  postsUserId: PropTypes.number
 };
 
 export default withRouter(User);
