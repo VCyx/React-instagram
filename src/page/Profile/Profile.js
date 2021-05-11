@@ -9,8 +9,10 @@ import Button from "../../components/Button/Button";
 import {GetPosts} from "../../components/InfinityScroll/GetPosts";
 import Loading from "../../components/Loading/Loading";
 import PropTypes from 'prop-types'
+import {logo} from "../../assets/svg";
 
-const Profile = ({location: {state: {name, avatar, postsUserId}}}) => {
+
+const Profile = ({history, location: {state: {name, avatar, postsUserId}}}) => {
 
   const [page,setPage] = useState(1);
   const test = useSelector(state => state.userReducer.users.posts);  // потрібно змінити запрос з сервера на ліміт\пайдж\юзер\ид
@@ -52,7 +54,7 @@ const Profile = ({location: {state: {name, avatar, postsUserId}}}) => {
   return (
     <div className={styles.container} >
       <div className={styles.icon}>
-        <Icon className={styles.iconSize} type='logo'/>
+        <Icon className={styles.iconSize} type='logo' onClick={()=>history.push('/')}/>
       </div>
       <div className={styles.user}>
         <img className={styles.avatar} src={testAva} alt="logo"/>
@@ -77,6 +79,7 @@ const Profile = ({location: {state: {name, avatar, postsUserId}}}) => {
         <div className={styles.galleryPosts} >
           {test.map((post,index) => (
             <div key={post.id} className={styles.galleryHover}>
+              {console.log(post)}
               <div className={styles.imageHover}>
                 <Icon type='like' color='white'/>
                 <span className={styles.iconCommentCount}>{post.like}</span>  {/*Додати з сервера*/}
