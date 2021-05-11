@@ -13,5 +13,5 @@ export const getUser = () => (dispatch) => {
 
 export const getPostsUser = (id) => (dispatch) => {
   axios(URL_USER_POSTS + id)
-    .then(res => dispatch(getUserPosts(res.data)))
+    .then(res => dispatch(getUserPosts(res.data.rows)))
 };

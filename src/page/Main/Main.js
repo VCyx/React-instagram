@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Main.module.scss";
 import Posts from "../../components/Posts/Posts";
-import {like, logo} from "../../assets/svg";
 import User from "../../components/User/User";
 import { useSelector} from "react-redux";
 
