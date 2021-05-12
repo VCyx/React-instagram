@@ -1,4 +1,4 @@
-import { Switch, Route} from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import Login from "../page/Login/Login";
 import Page404 from "../page/404/Page404";
 import Main from "../page/Main/Main";
@@ -11,6 +11,7 @@ const Routes = () => {
         <Route exact path="/" component={Main} />
         <Route path="/login" component={Login} />
         <Route path='/user/:name' component={Profile} />
+        <Route path="/404" component={Page404} />
         <Route path="*" component={Page404} />
       </Switch>
     </>

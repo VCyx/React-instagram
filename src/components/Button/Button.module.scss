@@ -1,0 +1,18 @@
+@import "src/static/styles/variables";
+
+.showMore {
+  border-radius: 30px;
+  padding: 8px 28px;
+  margin-bottom: 32px;
+  display: inherit;
+
+  background-color: #3772FF;
+  font-size: 14px;
+  color: #FFFFFF;
+  cursor: pointer;
+
+  @media #{$lt-md} {
+    font-size: 7px;
+    padding: 4px 12px;
+  }
+}

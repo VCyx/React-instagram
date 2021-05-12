@@ -4,6 +4,9 @@ import styles from "./Posts.module.scss";
 import PostItem from "../PostItem/PostItem";
 import Icon from "../Icon/Icon";
 
+// todo временно
+import avatar from "../../assets/img/post1/avatar.png";
+
 const Posts = ({ posts }) => {
   return (
     <>
@@ -16,11 +19,11 @@ const Posts = ({ posts }) => {
             return (
               <PostItem
                 key={post.id}
-                avatar={post.avatar}
+                avatar={avatar}
                 name={post.name}
-                picture={post.picture}
-                likes={post.likes}
-                comments={post.comments}
+                picture={post.img}
+                likes={post.like}
+                comments={post.commentaries}
               />
             );
           })}
