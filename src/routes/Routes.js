@@ -7,11 +7,10 @@ import Profile from "../page/Profile/Profile";
 const Routes = () => {
   return (
     <>
-
       <Switch>
         <Route exact path="/" component={Main} />
         <Route path="/login" component={Login} />
-        <Route path='/:name' component={Profile} />
+        <Route path='/user/:name' component={Profile} />
         <Route path="*" component={Page404} />
       </Switch>
     </>

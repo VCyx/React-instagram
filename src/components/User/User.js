@@ -2,19 +2,19 @@ import React from "react";
 import {withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-const User = ({name, avatar, history, postsUserId}) => {
+const User = ({nick, avatar, history, userId, location}) => {
   const openUserProfile = () => {
-    history.push(`/${postsUserId}`, { // змінити на нейм. тест
-      name,
-      avatar,
-      postsUserId
-    })
+      history.push(`/user/${nick}`, {
+        nick,
+        avatar,
+        userId
+      })
   };
   return (
     <div>
       <ul>
         <li style={{listStyle: 'none', cursor: 'pointer'}} onClick={openUserProfile}>
-          {name}
+          {nick}
         </li>
       </ul>
     </div>
