@@ -1,10 +1,13 @@
 import React from "react";
 import styles from "./PostItem.module.scss";
 import testAvatar from "../../assets/img/post1/avatar.png";
-import testPicture from "../../assets/img/post1/picture.png";
 import IconWithCount from "../IconWithCount/IconWithCount";
+import Button from "../Button/Button";
+import Comments from "../Comments/Comments";
+import Input from "../Input/Input";
+import { mainURL } from "../../api/AxiosAPI";
 
-const PostItem = ({ name, avatar, likes, comments }) => {
+const PostItem = ({ name, avatar, picture, likes, comments }) => {
   const countObjectKeys = (object) => {
     return Object.keys(object).length;
   };
@@ -18,7 +21,7 @@ const PostItem = ({ name, avatar, likes, comments }) => {
         <p className={styles.userName}>{name}</p>
       </div>
       <div className={styles.postPicture}>
-        <img src={testPicture} alt={`${name} post`} />
+        <img src={mainURL + picture} alt={`${name} post`} />
       </div>
       <div className={styles.footerIcons}>
         <IconWithCount
@@ -32,6 +35,9 @@ const PostItem = ({ name, avatar, likes, comments }) => {
           count={countObjectKeys(comments)}
         />
       </div>
+      {comments.length > 1 && <Button showMore />}
+      <Comments comments={comments} />
+      <Input comment />
     </div>
   );
 };

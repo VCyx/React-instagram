@@ -1,0 +1,1 @@
+export const LOAD_MAIN_POSTS = "LOAD_MAIN_POSTS";
