@@ -5,14 +5,19 @@ import Routes from "../../routes/Routes";
 import { useDispatch } from "react-redux";
 import { getUser } from "../../@redux/users/operation";
 import { getPosts } from "../../@redux/posts/operations";
+import { useHistory } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
-    dispatch(getPosts());
+    dispatch(getPosts()).catch((er) => {
+      console.log(er);
+      history.push("/404");
+    });
     dispatch(getUser());
-  }, [dispatch]);
+  }, [dispatch, history]);
 
   return (
     <div className="App">
