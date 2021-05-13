@@ -55,7 +55,7 @@ const Profile = ({history, location, location: {state: {nick, avatar, userId}}})
                     className={styles.btnSign}>Підписатися</Button> {/* !!! статус потрібно брати на сервері*/}
           </div>
           <p className={styles.userStatus}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem,
-            dolores.</p> {/* Брати з бази даних*/}
+            dolores.</p>
         </div>
       </div>
       <div className={styles.blockLine}>
@@ -64,7 +64,9 @@ const Profile = ({history, location, location: {state: {nick, avatar, userId}}})
         <div className={styles.lineGrey}/>
       </div>
       { loading ?
+
         <Loading loading={loading}/>
+
         :
         <div className={styles.galleryPosts} >
           {posts && posts.map((post, index) => (
