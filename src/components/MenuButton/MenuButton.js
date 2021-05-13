@@ -2,9 +2,9 @@ import React from "react";
 import style from "./MenuButton.module.scss";
 import classNames from "classnames";
 
-const MenuButton = ({ blue }) => {
+const MenuButton = ({ blue, className }) => {
   return (
-    <div className={style.menuContainer}>
+    <div className={classNames(style.menuContainer, className)}>
       <span
         className={classNames(style.plank, style.topPlank, blue && style.blue)}
       />

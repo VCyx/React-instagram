@@ -1,3 +1,5 @@
+@import "src/static/styles/variables.scss";
+
 .postsContainer {
   width: 100%;
   margin-top: 25px;
@@ -5,6 +7,23 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  @media (max-width: $middle)  {
+    position: relative;
+  }
+
+  .menuSmallScreen {
+    display: none;
+
+    @media (max-width: $middle) {
+      display: flex;
+      position: absolute;
+      top: 30px;
+      right: 0;
+
+      margin: 0;
+    }
+  }
 
   .logo {
     margin-bottom: 19px;
