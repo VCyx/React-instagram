@@ -35,24 +35,6 @@
       }
     }
   }
-
-  .btnSign, .btnSignIn {
-    width: 152px;
-    height: 27px;
-    border-radius: 30px;
-    padding: 5px 28px;
-    color: white;
-    background: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
-    text-align: center;
-    cursor: pointer;
-  }
-
-  .btnSignIn {
-    color: #3772ff;
-    box-shadow: 0 0 0 1px #3772ff;
-    background: white;
-  }
-
   .icon {
     margin: 30px 0;
     cursor: pointer;
@@ -166,11 +148,6 @@
       grid-template-columns: repeat(2, max(277px));
       align-items: center;
     }
-
-    .btnSign, .btnSignIn {
-      width: 149px;
-      padding: 3px 6px;
-    }
   }
 }
 
@@ -245,13 +222,6 @@
 
       }
     }
-
-    .btnSign, .btnSignIn {
-      width: 78px;
-      padding: 3px 10px;
-      height: 14px;
-    }
-
     .userStatus {
       width: 163px;
     }

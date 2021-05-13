@@ -1,18 +1,42 @@
 @import "src/static/styles/variables";
 
-.showMore {
+  .showMore, .subscribe, .subscribePersonal{
   border-radius: 30px;
+  font-size: 14px;
   padding: 8px 28px;
   margin-bottom: 32px;
   display: inherit;
-
-  background-color: #3772FF;
-  font-size: 14px;
   color: #FFFFFF;
   cursor: pointer;
-
+  background: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
+}
+.showMore{
+  background: rgba(55, 114, 255, 1);
   @media (max-width: $tablet) {
     font-size: 7px;
     padding: 4px 12px;
+    margin-bottom: 11px;
   }
 }
+.subscribe{
+  background: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
+  font-size: 14px;
+  padding: 3px 12px;
+}
+.subscribePersonal{
+  margin-bottom: 16px;
+ @media (max-width: 1024px) {
+   padding: 4px 12px;
+ }
+  @media (max-width: 480px) {
+    padding: 3px 10px;
+    font-size: 8px;
+    margin-bottom: 11px;
+  }
+}
+.btnSignIn{
+  color: #3772ff;
+  box-shadow: 0 0 0 1px #3772ff;
+  background: white;
+}
+
