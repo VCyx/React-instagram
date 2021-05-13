@@ -7,11 +7,11 @@ import Button from "../../components/Button/Button";
 import {GetPosts} from "../../components/InfinityScroll/GetPosts";
 import Loading from "../../components/Loading/Loading";
 import PropTypes from 'prop-types'
-import {logo} from "../../assets/svg";
 
 
-const Profile = ({history, location, location: {state: {nick, avatar, userId}}}) => {
-  const urlUser = (location.pathname === `/user/${nick}`);
+const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
+  // const urlUser = (location.pathname === `/user/${nick}`);
+
   const URL = 'http://176.105.100.114:7000/';
   const [page,setPage] = useState(1);
   const [posts, setPosts] = useState([]);
@@ -35,12 +35,6 @@ const Profile = ({history, location, location: {state: {nick, avatar, userId}}})
     setLoading(true);
   }, [userId]);
 
-
-  const toggleStatus = (e) => {
-    e.target.classList.contains(styles['btnSignIn']) ? e.target.textContent = 'Підписатися' : e.target.textContent = 'Відписатися';
-    e.target.classList.toggle(styles['btnSignIn']);
-  };
-
   return (
     <div className={styles.container} >
       <div className={styles.icon}>
@@ -51,8 +45,7 @@ const Profile = ({history, location, location: {state: {nick, avatar, userId}}})
         <div className={styles.status}>
           <div className={styles.userInfo}>
             <p className={styles.userName}>{nick}</p>
-            <Button onClick={toggleStatus}
-                    className={styles.btnSign}>Підписатися</Button> {/* !!! статус потрібно брати на сервері*/}
+            <Button subscribePersonal />
           </div>
           <p className={styles.userStatus}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem,
             dolores.</p>
@@ -64,9 +57,7 @@ const Profile = ({history, location, location: {state: {nick, avatar, userId}}})
         <div className={styles.lineGrey}/>
       </div>
       { loading ?
-
         <Loading loading={loading}/>
-
         :
         <div className={styles.galleryPosts} >
           {posts && posts.map((post, index) => (
