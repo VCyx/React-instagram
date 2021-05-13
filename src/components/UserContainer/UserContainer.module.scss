@@ -1,0 +1,18 @@
+
+.userContainer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-right: 32px;
+
+  margin-bottom: 35px;
+}
+
+.userAvatar {
+  border-radius: 50px;
+}
+
+.userName {
+  font-size: 18px;
+  color: #FFFFFF;
+}

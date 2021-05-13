@@ -11,7 +11,7 @@
   color: #FFFFFF;
   cursor: pointer;
 
-  @media (max-width: 902px) {
+  @media (max-width: $tablet) {
     font-size: 7px;
     padding: 4px 12px;
   }

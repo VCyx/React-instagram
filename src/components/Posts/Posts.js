@@ -6,6 +6,7 @@ import Icon from "../Icon/Icon";
 
 // todo временно
 import avatar from "../../assets/img/post1/avatar.png";
+import MenuButton from "../MenuButton/MenuButton";
 
 const Posts = ({ posts }) => {
   return (
@@ -13,6 +14,7 @@ const Posts = ({ posts }) => {
       <section className={styles.postsContainer}>
         <div className={styles.logo}>
           <Icon type="logo" />
+          <MenuButton blue className={styles.menuSmallScreen} />
         </div>
         {posts &&
           posts.map((post) => {
