@@ -10,7 +10,6 @@ const MainAside = () => {
   return (
     <>
       <MenuButton />
-      <h1>World</h1>
 
       {/*Перехід на конкретного юзера, заглушка*/}
       {users.map((user) => (

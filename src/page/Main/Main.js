@@ -14,17 +14,6 @@ const Main = () => {
         <Posts posts={posts} />
       </div>
       <aside>
-        <h1>World</h1>
-        {/*Перехід на конкретного юзера, заглушка*/}
-        {users.map((user) => (
-          <User
-            key={user.id}
-            avatar={user.img}
-            nick={user.nick}
-            userId={user.id}
-          />
-        ))}
-
         <MainAside />
       </aside>
     </div>
