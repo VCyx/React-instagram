@@ -1,24 +1,20 @@
 import React from "react";
 import MenuButton from "../MenuButton/MenuButton";
-import User from "../User/User";
 import { useSelector } from "react-redux";
+import OtherUsers from "../OtherUsers/OtherUsers";
+import UserContainer from "../UserContainer/UserContainer";
 
 const MainAside = () => {
   // всі юзери
   const users = useSelector((state) => state.userReducer.users.data);
+  // console.log(users);
 
   return (
     <>
       <MenuButton />
-      <h1>World</h1>
-      {users.map((user) => (
-        <User
-          key={user.id}
-          avatar={user.img}
-          nick={user.nick}
-          userId={user.id}
-        />
-      ))}
+      <UserContainer />
+      <OtherUsers title={"Розповіді"} users={users} />
+      <OtherUsers title={"Рекомендації"} users={users} recommendation />
     </>
   );
 };

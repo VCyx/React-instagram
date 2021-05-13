@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Comments.module.scss";
 
 const Comments = ({ comments }) => {
-  console.log("comments", comments);
   if (comments.length < 1) {
     return (
       <div className={styles.commentContainer}>
