@@ -7,7 +7,7 @@ import UserContainer from "../UserContainer/UserContainer";
 const MainAside = () => {
   // всі юзери
   const users = useSelector((state) => state.userReducer.users.data);
-  console.log(users);
+  // console.log(users);
 
   return (
     <>
