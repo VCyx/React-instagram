@@ -7,6 +7,7 @@ import Button from "../../components/Button/Button";
 import {GetPosts} from "../../components/InfinityScroll/GetPosts";
 import Loading from "../../components/Loading/Loading";
 import PropTypes from 'prop-types'
+import {logo} from "../../assets/svg";
 
 
 const Profile = ({history, location, location: {state: {nick, avatar, userId}}}) => {
