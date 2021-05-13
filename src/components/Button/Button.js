@@ -13,6 +13,7 @@ const Button = ({
 }) => {
 
   const toggleStatus = (e) =>{
+    e.stopPropagation();
     e.target.classList.contains(styles['btnSignIn']) ? e.target.textContent = 'Підписатися' : e.target.textContent = 'Відписатися';
     e.target.classList.toggle(styles['btnSignIn']);
   };

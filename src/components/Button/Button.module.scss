@@ -21,7 +21,9 @@
 .subscribe{
   background: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
   font-size: 14px;
-  padding: 3px 12px;
+  padding: 3px 10px;
+  margin-bottom: 0;
+
 }
 .subscribePersonal{
   margin-bottom: 16px;
@@ -38,5 +40,10 @@
   color: #3772ff;
   box-shadow: 0 0 0 1px #3772ff;
   background: white;
+}
+.backgroundSubcribe{
+  background: #3772FF;
+  color: white;
+  border: 1px solid white;
 }
 

@@ -2,6 +2,7 @@ import React from "react";
 import style from "./OtherUsers.module.scss";
 import userLogo from "../../assets/img/userLogo.png";
 import { useHistory } from "react-router-dom";
+import Button from "../Button/Button";
 
 const OtherUsers = ({ title, users, recommendation }) => {
   const history = useHistory();
@@ -31,7 +32,7 @@ const OtherUsers = ({ title, users, recommendation }) => {
                 <img src={userLogo} alt="Avatar" width="30" height="30" />
               </div>
               <span className={style.nickname}>{user.nick}</span>
-              {recommendation && <span>КНОПКА</span>}
+             <span> {recommendation && <Button subscribe/>}</span>
             </li>
           );
         })}
