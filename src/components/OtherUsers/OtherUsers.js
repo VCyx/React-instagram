@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 import { avaURL, mainURL } from "../../api/AxiosAPI";
 
 const OtherUsers = ({ title, users, recommendation }) => {
-  console.log("users", users);
+  // console.log("users", users);
   const history = useHistory();
 
   const checkUser = (nick, userId, avatar) => {
