@@ -1,3 +1,5 @@
+@import "src/static/styles/variables";
+
 .commentContainer {
   position: relative;
 }
@@ -13,9 +15,18 @@
 
   outline: none;
 
+  @media (max-width: $phone) {
+    padding: 15px 120px 15px 30px;
+    width: auto;
+  }
+
   &::placeholder {
     font-size: 18px;
     color: #ABB2C1;
+
+    @media (max-width: $phone) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -27,4 +38,8 @@
   position: absolute;
   top: 30%;
   right: 50px;
+
+  @media (max-width: $phone) {
+    font-size: 14px;
+  }
 }
