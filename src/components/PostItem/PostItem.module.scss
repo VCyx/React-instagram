@@ -1,6 +1,11 @@
+@import "src/static/styles/variables";
 
 .container {
   margin-bottom: 30px;
+
+  @media (max-width: $middle)  {
+    margin: 0 auto 30px;
+  }
 }
 
 .header {
@@ -19,15 +24,15 @@
 }
 
 .postPicture {
-  border-radius: 30px;
   max-width: 590px;
   max-height: 590px;
 
-  // todo under question
-  overflow: hidden;
-  //height: 100%;
-  //width: 100%;
-  //object-fit: contain;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 30px;
+  }
 
   margin-bottom: 29px;
 }

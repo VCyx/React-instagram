@@ -1,15 +1,17 @@
 import React from "react";
 import style from "./OtherUsers.module.scss";
-import userLogo from "../../assets/img/userLogo.png";
 import { useHistory } from "react-router-dom";
+import { avaURL, mainURL } from "../../api/AxiosAPI";
 
 const OtherUsers = ({ title, users, recommendation }) => {
+  console.log("users", users);
   const history = useHistory();
 
-  const checkUser = (nick, userId) => {
+  const checkUser = (nick, userId, avatar) => {
     history.push(`/user/${nick}`, {
       nick: nick,
       userId: userId,
+      avatar: avatar,
     });
   };
 
@@ -23,12 +25,17 @@ const OtherUsers = ({ title, users, recommendation }) => {
         {users.map((user) => {
           return (
             <li
-              onClick={() => checkUser(user.nick, user.userId)}
+              onClick={() => checkUser(user.nick, user.userId, user.avatar)}
               className={style.usersItem}
               key={user.userId}
             >
               <div className={style.avatar}>
-                <img src={userLogo} alt="Avatar" width="30" height="30" />
+                <img
+                  src={avaURL + user.avatar}
+                  alt="Avatar"
+                  width="30"
+                  height="30"
+                />
               </div>
               <span className={style.nickname}>{user.nick}</span>
               {recommendation && <span>КНОПКА</span>}

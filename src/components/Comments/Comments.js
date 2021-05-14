@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Comments.module.scss";
 
 const Comments = ({ comments }) => {
+  console.log("comments", comments);
   if (comments.length < 1) {
     return (
       <div className={styles.commentContainer}>
@@ -12,14 +13,15 @@ const Comments = ({ comments }) => {
 
   return (
     <div className={styles.commentContainer}>
-      <div className={styles.commentItem}>
-        <p className={styles.commentAuthor}>uncle_drew</p>
-        <p className={styles.commentText}>This is a fantastic goal</p>
-      </div>
-      <div className={styles.commentItem}>
-        <p className={styles.commentAuthor}>uncle_drew</p>
-        <p className={styles.commentText}>This is a fantastic goal</p>
-      </div>
+      {comments.map((eachComment) => {
+        return (
+          <div key={eachComment.id} className={styles.commentItem}>
+            {/*todo Author here*/}
+            <p className={styles.commentAuthor}>{eachComment.id}</p>
+            <p className={styles.commentText}>{eachComment.comment}</p>
+          </div>
+        );
+      })}
     </div>
   );
 };
