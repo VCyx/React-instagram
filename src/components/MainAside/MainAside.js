@@ -1,8 +1,9 @@
 import React from "react";
-import MenuButton from "../MenuButton/MenuButton";
 import { useSelector } from "react-redux";
 import OtherUsers from "../OtherUsers/OtherUsers";
 import UserContainer from "../UserContainer/UserContainer";
+import Menu from "../Menu/Menu";
+
 
 const MainAside = () => {
   // всі юзери
@@ -11,7 +12,7 @@ const MainAside = () => {
 
   return (
     <>
-      <MenuButton />
+      <Menu/>
       <UserContainer />
       <OtherUsers title={"Розповіді"} users={users} />
       <OtherUsers title={"Рекомендації"} users={users} recommendation />

@@ -6,7 +6,6 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   .user {
     margin-left: 79px;
     display: flex;
@@ -36,10 +35,17 @@
     }
   }
   .icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     margin: 30px 0;
+  }
+  .iconNone{
     cursor: pointer;
   }
-
+ .menuPosition{
+   align-items: center;
+ }
   .blockLine {
     display: flex;
   }
@@ -126,7 +132,7 @@
     }
 
     .icon {
-      align-self: flex-start;
+      align-self: normal;
       margin-bottom: 27px;
       margin-left: 60px;
     }
@@ -166,7 +172,7 @@
     }
 
     .icon {
-      align-self: flex-start;
+      align-self: normal;
       margin-bottom: 27px;
       margin-left: 20px;
     }
@@ -212,15 +218,12 @@
         }
       }
     }
+    .icon{
+      justify-content: flex-end;
+    }
+    .iconNone {
+      display: none;
 
-    .icon {
-      margin-bottom: 17px;
-
-      .iconSize > svg {
-        width: 38px;
-        height: 30px;
-
-      }
     }
     .userStatus {
       width: 163px;
