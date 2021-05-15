@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./Posts.module.scss";
 import PostItem from "../PostItem/PostItem";
 import Icon from "../Icon/Icon";
-import MenuButton from "../MenuButton/MenuButton";
 
 const Posts = ({ posts }) => {
   return (
