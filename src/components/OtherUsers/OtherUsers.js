@@ -1,7 +1,7 @@
 import React from "react";
 import style from "./OtherUsers.module.scss";
 import { useHistory } from "react-router-dom";
-import { avaURL, mainURL } from "../../api/AxiosAPI";
+import { avaURL } from "../../api/AxiosAPI";
 import Button from "../Button/Button";
 
 const OtherUsers = ({ title, users, recommendation }) => {
