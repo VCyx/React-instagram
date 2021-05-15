@@ -8,7 +8,6 @@ import Menu from "../Menu/Menu";
 const MainAside = () => {
   // всі юзери
   const users = useSelector((state) => state.userReducer.users.data);
-  // console.log(users);
 
   return (
     <>

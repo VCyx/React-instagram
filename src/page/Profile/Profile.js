@@ -11,7 +11,6 @@ import Menu from "../../components/Menu/Menu";
 
 
 const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
-  // const urlUser = (location.pathname === `/user/${nick}`);
 
   const URL = 'http://176.105.100.114:7000/';
   const [page,setPage] = useState(1);
