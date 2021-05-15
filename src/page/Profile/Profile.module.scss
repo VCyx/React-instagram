@@ -6,6 +6,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  position: relative;
   .user {
     margin-left: 79px;
     display: flex;
@@ -44,9 +45,7 @@
   .iconNone{
     cursor: pointer;
   }
- .menuPosition{
-   align-items: center;
- }
+
   .blockLine {
     display: flex;
   }
@@ -115,6 +114,11 @@
   .galleryPosts:last-child {
     margin-bottom: 31px;
   }
+}
+.menuPosition{
+  position: absolute;
+  top: 59px;
+  right: 0;
 }
 
 @media (max-width: 1024px) {
