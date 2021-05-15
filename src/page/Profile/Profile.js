@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./Profile.module.scss";
 import Icon from '../../components/Icon/Icon'
-import testAva from '../../assets/img/post1/avatar.png'
 import {withRouter} from 'react-router';
 import Button from "../../components/Button/Button";
 import {GetPosts} from "../../components/InfinityScroll/GetPosts";
 import Loading from "../../components/Loading/Loading";
 import PropTypes from 'prop-types'
 import Menu from "../../components/Menu/Menu";
+import {avaURL} from '../../api/AxiosAPI'
+
 
 
 const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
@@ -46,7 +47,7 @@ const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
          </div>
       </div>
       <div className={styles.user}>
-        <img className={styles.avatar} src={testAva} alt="logo"/>
+        <img className={styles.avatar} src={avaURL + avatar} alt="logo"/>
         <div className={styles.status}>
           <div className={styles.userInfo}>
             <p className={styles.userName}>{nick}</p>

@@ -5,7 +5,7 @@ import { avaURL, mainURL } from "../../api/AxiosAPI";
 import Button from "../Button/Button";
 
 const OtherUsers = ({ title, users, recommendation }) => {
-  // console.log("users", users);
+   console.log("users", users);
   const history = useHistory();
 
   const checkUser = (nick, userId, avatar) => {
