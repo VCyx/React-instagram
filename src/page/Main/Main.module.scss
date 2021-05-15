@@ -9,12 +9,19 @@
   justify-content: space-between;
   flex: 1 0 auto;
 
+  @media (max-width: $middle) {
+    justify-content: center;
+  }
+
 
 
   aside {
     background-color: $secondary-background-color;
     height: 100%;
-    width: 280px;
     padding-top: 50px;
+
+    @media (max-width: $middle)  {
+      display: none;
+    }
   }
 }

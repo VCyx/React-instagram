@@ -1,0 +1,25 @@
+
+.commentContainer {
+  margin-bottom: 30px;
+}
+
+.commentItem {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.commentAuthor {
+  width: 124px;
+  margin-right: 14px;
+  text-overflow: ellipsis;
+
+  font-weight: bold;
+  font-size: 18px;
+  text-align: left;
+}
+
+.commentText {
+  font-size: 18px;
+  text-align: left;
+  flex: 1;
+}

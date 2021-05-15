@@ -1,0 +1,45 @@
+@import "src/static/styles/variables";
+
+.commentContainer {
+  position: relative;
+}
+
+.commentInput {
+  background: #F5F7FB;
+  border: 1px solid #ABB2C1;
+  border-radius: 50px;
+
+  width: 65%;
+  //height: 50px;
+  padding: 15px 150px 15px 50px;
+
+  outline: none;
+
+  @media (max-width: $phone) {
+    padding: 15px 120px 15px 30px;
+    width: auto;
+  }
+
+  &::placeholder {
+    font-size: 18px;
+    color: #ABB2C1;
+
+    @media (max-width: $phone) {
+      font-size: 14px;
+    }
+  }
+}
+
+.send {
+  cursor: pointer;
+  color: #ABB2C1;
+  font-size: 18px;
+
+  position: absolute;
+  top: 30%;
+  right: 50px;
+
+  @media (max-width: $phone) {
+    font-size: 14px;
+  }
+}

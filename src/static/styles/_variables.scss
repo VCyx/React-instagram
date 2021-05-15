@@ -8,9 +8,7 @@ $text-color: #000;
 $max-content-width: 900px;
 $narrow-content-width: 1024px;
 
-$tablet: 902;
-$desktop: 1280;
-
-$lt-lg: screen and (max-width: #{$desktop - 1}px,);
-$lt-md: screen and (max-width: #{$tablet}px,);
-$gt-md: screen and (min-width: #{$tablet + 1}px,);
+$phone: 480px;
+$tablet: 768px;
+$middle: 1024px;
+//$desktop: 1280px;
