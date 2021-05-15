@@ -2,14 +2,17 @@
 .menuContainer {
   width: 30px;
   height: 15px;
-  margin: 0 48px 45px auto;
+  margin: 0 48px 10px auto;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-
+  visibility: visible;
   cursor: pointer;
+}
+.menuContainer.disabled{
+  visibility: hidden;
 }
 
 .plank {
@@ -33,3 +36,28 @@
 .blue {
   background: linear-gradient(268.34deg, #3772FF -16.83%, #00CECB 100%);
 }
+.btnBlock{
+  display: flex;
+  position: relative;
+}
+.close {
+  visibility: hidden;
+  position: absolute;
+  right: 45px;
+  top: -6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height:30px;
+  width: 30px;
+  background: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 20px;
+  color: black;
+  font-weight: 600;
+}
+.close.active{
+  visibility: visible;
+}
+
