@@ -18,11 +18,7 @@ const MenuButton = ({blue, className}) => {
           <span className={classNames(style.plank, style.bottomPlank, blue && style.blue)}/>
         </div>
       </div>
-      {blue ?
         <MenuItems active={menuActive} />
-          :
-        <MenuItems active={menuActive} background/>
-      }
     </>
   );
 };
