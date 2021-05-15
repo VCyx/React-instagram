@@ -11,24 +11,39 @@ const Button = ({
   subscribePersonal,
   ...attrs
 }) => {
-
-  const toggleStatus = (e) =>{
+  const toggleStatus = (e) => {
     e.stopPropagation();
-    e.target.classList.contains(styles['btnSignIn']) ? e.target.textContent = 'Підписатися' : e.target.textContent = 'Відписатися';
-    e.target.classList.toggle(styles['btnSignIn']);
+    e.target.classList.contains(styles["btnSignIn"])
+      ? (e.target.textContent = "Підписатися")
+      : (e.target.textContent = "Відписатися");
+    e.target.classList.toggle(styles["btnSignIn"]);
   };
 
-  if (showMore) return <button className={styles.showMore}>Показати більше</button>;
-  else if(subscribe) return <button  onClick={(e)=>toggleStatus(e)} className={styles.subscribe}>Підписатися</button>;
-  else if(subscribePersonal) return <button onClick={(e)=>toggleStatus(e)} className={styles.subscribePersonal}>Підписатися</button>;
+  if (showMore)
+    return (
+      <button onClick={onClick} className={styles.showMore}>
+        Показати більше
+      </button>
+    );
+  else if (subscribe)
+    return (
+      <button onClick={(e) => toggleStatus(e)} className={styles.subscribe}>
+        Підписатися
+      </button>
+    );
+  else if (subscribePersonal)
+    return (
+      <button
+        onClick={(e) => toggleStatus(e)}
+        className={styles.subscribePersonal}
+      >
+        Підписатися
+      </button>
+    );
 
   return (
     <div>
-      <button
-        {...attrs}
-        className={className}
-        onClick={onClick}
-      >
+      <button {...attrs} className={className} onClick={onClick}>
         {children}
       </button>
     </div>
