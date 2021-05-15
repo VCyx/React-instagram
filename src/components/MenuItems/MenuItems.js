@@ -1,10 +1,14 @@
 import React from 'react';
 import style from './MenuItems.module.scss'
-import {Link} from "react-router-dom";
+import {Link,useHistory} from "react-router-dom";
 
 
-const MenuItems = ({ active, background}) => {
+const MenuItems = ({ active }) => {
+  const history = useHistory();
+
   const exitHandler = () =>{
+    history.push('/');
+
     console.log('Exit')
   };
   const createHandler = () =>{
