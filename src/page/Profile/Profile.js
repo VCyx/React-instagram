@@ -7,6 +7,7 @@ import Button from "../../components/Button/Button";
 import {GetPosts} from "../../components/InfinityScroll/GetPosts";
 import Loading from "../../components/Loading/Loading";
 import PropTypes from 'prop-types'
+import Menu from "../../components/Menu/Menu";
 
 
 const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
@@ -38,7 +39,12 @@ const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
   return (
     <div className={styles.container} >
       <div className={styles.icon}>
-        <Icon className={styles.iconSize} type='logo' onClick={()=>history.push('/')}/>
+        <div className={styles.iconNone}>
+          <Icon className={styles.iconSize} type='logo' onClick={()=>history.push('/')}/>
+        </div>
+        <div className={styles.menuPosition}>
+            <Menu color={true}/>
+         </div>
       </div>
       <div className={styles.user}>
         <img className={styles.avatar} src={testAva} alt="logo"/>
