@@ -6,7 +6,7 @@ import MainAside from "../../components/MainAside/MainAside";
 
 const Main = () => {
   const posts = useSelector((state) => state.postsReducer.posts);
-  console.log("posts", posts);
+  // console.log("posts", posts);
 
   return (
     <div className={styles.container}>
