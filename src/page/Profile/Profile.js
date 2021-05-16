@@ -8,10 +8,22 @@ import Loading from "../../components/Loading/Loading";
 import PropTypes from 'prop-types'
 import Menu from "../../components/Menu/Menu";
 import {avaURL} from '../../api/AxiosAPI'
-
+import {useParams} from 'react-router-dom'
+import {useDispatch,useSelector} from "react-redux";
+import {getUserPosts} from "../../@redux/users/operation";
 
 
 const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
+  // const userIdd = useParams()
+  // const dispatch = useDispatch();
+
+  //
+  // useEffect(() => {
+  //  dispatch(getUserPosts(userIdd.name))
+  // }, []);
+  //
+  // const post = useSelector(store=> store.userReducer.users.posts);
+  // console.log(post)
 
   const URL = 'http://176.105.100.114:7000/';
   const [page,setPage] = useState(1);
@@ -33,7 +45,7 @@ const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
   },[page]);
 
   useEffect(() => {
-    setLoading(true);
+    setLoading(true)
   }, [userId]);
 
   return (
