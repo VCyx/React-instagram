@@ -1,3 +1,5 @@
+@import "src/static/styles/variables.scss";
+
 .menu{
   width: 280px;
   background: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
@@ -5,15 +7,20 @@
   margin-bottom: 10px;
   border-radius: 30px;
   position: absolute;
-  left: -103px;
-  top: -32px;
+  right: 30px;
+  top: -30px;
+
+  @media (max-width: $middle) {
+    top: -25px;
+    right: 37px;
+  }
 }
 .menu.active{
   transform: translateX(0%);
 }
 .menuContent{
   display: flex;
-  justify-content:start;
+  justify-content: flex-start;
   align-items: flex-end;
   cursor: default;
 }
