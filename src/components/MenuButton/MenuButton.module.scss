@@ -1,3 +1,4 @@
+@import "src/static/styles/variables.scss";
 
 .menuContainer {
   width: 30px;
@@ -10,9 +11,6 @@
   align-items: flex-end;
   visibility: visible;
   cursor: pointer;
-}
-.menuContainer.disabled{
-  visibility: hidden;
 }
 
 .plank {
@@ -40,6 +38,10 @@
   display: flex;
   position: relative;
   margin-bottom: 45px;
+
+  @media (max-width: $middle) {
+    position: static;
+  }
 }
 .close {
   visibility: hidden;
