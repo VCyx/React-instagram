@@ -10,8 +10,9 @@ const Posts = ({ posts }) => {
       <section className={styles.postsContainer}>
         <div className={styles.logo}>
           <Icon type="logo" />
-          {/*/!*<MenuButton blue className={styles.menuSmallScreen} />*!/ - що він робить?*/}
         </div>
+        <MenuButton blue className={styles.menuSmallScreen} />
+
         {posts &&
           posts.map((post) => {
             return (

@@ -1,12 +1,15 @@
-import {LOAD_USER_REQUEST,LOAD_USER_SUCCESS,LOAD_USER_POST} from './type'
+import {LOAD_USER_REQUEST,LOAD_USER_SUCCESS} from './type'
 
 const initialState ={
     users:{
         data: [],
         isLoading: true,
         posts: [],
+        isAuth: false,
+        user: {}
     },
 };
+
 
 const userReducer = (state = initialState, action) => {
     switch(action.type){
@@ -14,8 +17,6 @@ const userReducer = (state = initialState, action) => {
             return {...state, users: {...state.users, isLoading: action.payload}}
          case LOAD_USER_SUCCESS:
             return {...state, users: {...state.users, data: action.payload}};
-         case LOAD_USER_POST:
-            return {...state, users: {...state.users, posts: action.payload}};
         default:
         return state
     }

@@ -9,6 +9,8 @@ const Button = ({
   showMore,
   subscribe,
   subscribePersonal,
+  auth,
+  regist,
   ...attrs
 }) => {
   const toggleStatus = (e) => {
@@ -39,6 +41,14 @@ const Button = ({
       >
         Підписатися
       </button>
+    );
+  else if (auth)
+    return (
+        <button className={styles.auth} onClick={onClick}>Увійти</button>
+    );
+  else if (regist)
+    return (
+        <button className={styles.regist} onClick={onClick}>Зареєструватися</button>
     );
 
   return (

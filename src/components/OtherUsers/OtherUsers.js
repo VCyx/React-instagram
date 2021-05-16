@@ -5,13 +5,13 @@ import { avaURL } from "../../api/AxiosAPI";
 import Button from "../Button/Button";
 
 const OtherUsers = ({ title, users, recommendation }) => {
-   console.log("users", users);
   const history = useHistory();
+
   const checkUser = (nick, userId, avatar) => {
     history.push(`/user/${nick}`, {
       nick: nick,
       userId: userId,
-       avatar: avatar,
+      avatar: avatar
     });
   };
 
@@ -38,7 +38,7 @@ const OtherUsers = ({ title, users, recommendation }) => {
                 />
               </div>
               <span className={style.nickname}>{user.nick}</span>
-             <span> {recommendation && <Button subscribe/>}</span>
+              <span> {recommendation && <Button subscribe />}</span>
             </li>
           );
         })}

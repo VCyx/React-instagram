@@ -1,9 +1,7 @@
 import axios from "axios";
-import {getUserSuccess, getRequest, getUserPost} from "./action";
+import {getUserSuccess, getRequest} from "./action";
 
 const URL_GET_USER = `http://176.105.100.114:7000/api/user/all `;
-//const URL_GET_USER_POST = `http://176.105.100.114:7000/api/post/user/`;
-
 
 export const getUser = () => (dispatch) => {
   dispatch(getRequest());
@@ -11,10 +9,4 @@ export const getUser = () => (dispatch) => {
     dispatch(getUserSuccess(res.data.rows));
   });
 };
-
-// export const getUserPosts = (userId) => (dispatch) => {
-//   axios(URL_GET_USER_POST + userId).then((res) => {
-//     dispatch(getUserPost(res.data.rows));
-//   });
-// };
 
