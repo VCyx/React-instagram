@@ -5,11 +5,14 @@ import { avaURL } from "../../api/AxiosAPI";
 import Button from "../Button/Button";
 
 const OtherUsers = ({ title, users, recommendation }) => {
-  // console.log("users", users);
   const history = useHistory();
 
-  const checkUser = (id) => {
-    history.push(`/user/${id}`);
+  const checkUser = (nick, userId, avatar) => {
+    history.push(`/user/${nick}`, {
+      nick: nick,
+      userId: userId,
+      avatar: avatar
+    });
   };
 
   return (
@@ -22,7 +25,7 @@ const OtherUsers = ({ title, users, recommendation }) => {
         {users.map((user) => {
           return (
             <li
-              onClick={() => checkUser(user.userId)}
+              onClick={() => checkUser(user.nick, user.userId, user.avatar)}
               className={style.usersItem}
               key={user.userId}
             >
