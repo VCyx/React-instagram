@@ -8,12 +8,8 @@ const OtherUsers = ({ title, users, recommendation }) => {
   // console.log("users", users);
   const history = useHistory();
 
-  const checkUser = (nick, userId, avatar) => {
-    history.push(`/user/${nick}`, {
-      nick: nick,
-      userId: userId,
-      avatar: avatar,
-    });
+  const checkUser = (id) => {
+    history.push(`/user/${id}`);
   };
 
   return (
@@ -26,7 +22,7 @@ const OtherUsers = ({ title, users, recommendation }) => {
         {users.map((user) => {
           return (
             <li
-              onClick={() => checkUser(user.nick, user.userId, user.avatar)}
+              onClick={() => checkUser(user.userId)}
               className={style.usersItem}
               key={user.userId}
             >
@@ -39,7 +35,7 @@ const OtherUsers = ({ title, users, recommendation }) => {
                 />
               </div>
               <span className={style.nickname}>{user.nick}</span>
-             <span> {recommendation && <Button subscribe/>}</span>
+              <span> {recommendation && <Button subscribe />}</span>
             </li>
           );
         })}

@@ -14,7 +14,6 @@ const Input = (comment) => {
       </form>
     );
   }
-
   return (
     <div>
       <input type="text" />

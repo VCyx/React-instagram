@@ -5,8 +5,12 @@ const initialState ={
         data: [],
         isLoading: true,
         posts: [],
+        isAuth: false,
+        user: {}
     },
 };
+
+
 
 const userReducer = (state = initialState, action) => {
     switch(action.type){

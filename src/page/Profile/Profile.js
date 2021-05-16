@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./Profile.module.scss";
 import Icon from '../../components/Icon/Icon'
-import testAva from '../../assets/img/post1/avatar.png'
 import {withRouter} from 'react-router';
 import Button from "../../components/Button/Button";
 import {GetPosts} from "../../components/InfinityScroll/GetPosts";
@@ -21,6 +20,12 @@ const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
 
 
 
+
+import {avaURL} from '../../api/AxiosAPI'
+
+
+
+const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
 
   const URL = 'http://176.105.100.114:7000/';
   const [page,setPage] = useState(1);
@@ -70,7 +75,7 @@ const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
          </div>
       </div>
       <div className={styles.user}>
-        <img className={styles.avatar} src={testAva} alt="logo"/>
+        <img className={styles.avatar} src={avaURL + avatar} alt="logo"/>
         <div className={styles.status}>
           <div className={styles.userInfo}>
             <p className={styles.userName}>{nick}</p>
