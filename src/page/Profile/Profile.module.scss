@@ -75,6 +75,11 @@
     width: 277px;
     height: 277px;
   }
+  .galleryImageBox {
+    border-radius: 15px 0 0 15px;
+    width: 100%;
+    height: 100%;
+  }
 
   .galleryHover {
     position: relative;
@@ -98,11 +103,17 @@
 ;
 
   .iconComment {
-    margin-left: 52px;
+    margin-left: 21px;
+    cursor: pointer
   }
 
   .iconCommentCount {
     margin: 0 2px 30px 0;
+  }
+  .iconCommentCountModal {
+    margin: 0 2px 30px 0;
+    color: #ABB2C1;
+    cursor: pointer;
   }
 
   .galleryHover:hover .imageHover {
