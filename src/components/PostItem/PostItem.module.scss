@@ -1,7 +1,7 @@
 @import "src/static/styles/variables";
 
 .container {
-  margin-bottom: 30px;
+  margin: 0 auto 30px;
 
   @media (max-width: $middle)  {
     margin: 0 auto 30px;
