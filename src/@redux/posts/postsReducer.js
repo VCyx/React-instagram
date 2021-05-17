@@ -1,6 +1,4 @@
 import { ADD_POST_COMMENT, LOAD_MAIN_POSTS } from "./types";
-import { getOnePost, updatePost } from "./operations";
-import { useDispatch } from "react-redux";
 
 const initialState = {
   posts: [],
