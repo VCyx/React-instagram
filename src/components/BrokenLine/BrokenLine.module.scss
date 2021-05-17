@@ -1,0 +1,59 @@
+@import "src/static/styles/main.scss";
+
+.blockLine {
+  display: flex;
+}
+
+.lineBlue {
+  @include line(312px, #3772FF, 30px)
+}
+
+.lineLightBlue {
+  @include line(312px, #00CECB, 30px)
+}
+
+.lineGrey {
+  @include line(277px, #ABB2C1, 30px)
+}
+
+@media (max-width: $middle) {
+  .lineBlue {
+    @include line(225px, #3772FF, 30px)
+  }
+
+  .lineLightBlue {
+    @include line(225px, #00CECB, 30px)
+  }
+
+  .lineGrey {
+    @include line(200px, #ABB2C1, 30px)
+  }
+}
+
+@media (max-width: $tablet) {
+  .lineBlue {
+    @include line(160px, #3772FF, 20px)
+  }
+
+  .lineLightBlue {
+    @include line(160px, #00CECB, 20px)
+  }
+
+  .lineGrey {
+    @include line(130px, #ABB2C1, 20px)
+  }
+}
+
+@media (max-width: $phone) {
+  .lineBlue {
+    @include line(94px, #3772FF, 10px)
+  }
+
+  .lineLightBlue {
+    @include line(94px, #00CECB, 10px)
+  }
+
+  .lineGrey {
+    @include line(83px, #ABB2C1, 10px)
+  }
+}

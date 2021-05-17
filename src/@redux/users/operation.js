@@ -1,7 +1,8 @@
 import axios from "axios";
-import {getUserSuccess, getRequest} from "./action";
+import {getUserSuccess, getRequest,getOneUser} from "./action";
 
 const URL_GET_USER = `http://176.105.100.114:7000/api/user/all `;
+const GET_USER = `http://176.105.100.114:7000/api/user/ `;
 
 export const getUser = () => (dispatch) => {
   dispatch(getRequest());
@@ -10,3 +11,8 @@ export const getUser = () => (dispatch) => {
   });
 };
 
+export const getUserPage = (userId) => (dispatch) => {
+  axios(`${GET_USER}${userId}`).then((res) => {
+    dispatch(getOneUser(res.data));
+  });
+};

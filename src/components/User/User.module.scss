@@ -1,0 +1,120 @@
+@import "src/static/styles/main.scss";
+
+.user {
+  margin-left: 79px;
+  display: flex;
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .status {
+    margin-left: 80px;
+    max-width: 350px;
+    font-size: 12px;
+    align-self: flex-end;
+    text-align: left;
+
+    .userInfo {
+      display: flex;
+      align-items: baseline;
+    }
+
+    .userName {
+      font-size: 18px;
+      margin-bottom: 20px;
+      margin-right: 10px;
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.iconBlock {
+  cursor: pointer;
+}
+
+.menuPosition {
+  position: absolute;
+  top: 59px;
+  right: 0;
+}
+
+@media (max-width: $middle) {
+  .user {
+    align-self: flex-start;
+    margin-left: 60px;
+
+    .status {
+      margin-left: 20px;
+      align-self: center;
+    }
+  }
+  .icon {
+    align-self: normal;
+    margin-bottom: 27px;
+    margin-left: 60px;
+  }
+}
+
+@media (max-width: $tablet) {
+  .user {
+    align-self: flex-start;
+    margin-left: 20px;
+
+    .status {
+      margin-left: 8px;
+      font-size: 10px;
+    }
+  }
+  .icon {
+    align-self: normal;
+    margin-bottom: 27px;
+    margin-left: 20px;
+  }
+}
+
+@media (max-width: $phone) {
+  .user {
+    margin-bottom: 10px;
+
+    .avatar {
+      width: 22px;
+      height: 22px;
+    }
+
+    .status {
+      margin-left: 11px;
+
+      .userName {
+        margin-bottom: 10px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .icon {
+    margin-bottom: 30px;
+
+    span > svg {
+      width: 38px;
+      height: 30px;
+    }
+  }
+
+  .menuPosition {
+    top: 38px;
+  }
+
+  .userStatus {
+    width: 163px;
+  }
+}

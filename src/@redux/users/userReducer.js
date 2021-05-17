@@ -1,4 +1,4 @@
-import { LOAD_USER_REQUEST, LOAD_USER_SUCCESS } from "./type";
+import { LOAD_USER_REQUEST, LOAD_USER_SUCCESS, GET_USER } from "./type";
 
 const initialState = {
   users: {
@@ -8,8 +8,10 @@ const initialState = {
     isAuth: localStorage.getItem("token") || false,
     user: {},
   },
+  user:{
+     data: {}
+  }
 };
-
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -17,6 +19,8 @@ const userReducer = (state = initialState, action) => {
       return { ...state, users: { ...state.users, isLoading: action.payload } };
     case LOAD_USER_SUCCESS:
       return { ...state, users: { ...state.users, data: action.payload } };
+   case GET_USER:
+      return { ...state, user: {data: action.payload }};
     default:
       return state;
   }
