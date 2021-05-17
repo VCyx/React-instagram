@@ -1,3 +1,4 @@
+@import "src/static/styles/variables.scss";
 
 .menuContainer {
   width: 30px;
@@ -10,9 +11,8 @@
   align-items: flex-end;
   visibility: visible;
   cursor: pointer;
-}
-.menuContainer.disabled{
-  visibility: hidden;
+
+  position: relative;
 }
 
 .plank {
@@ -36,14 +36,19 @@
 .blue {
   background: linear-gradient(268.34deg, #3772FF -16.83%, #00CECB 100%);
 }
-.btnBlock{
-  display: flex;
-  position: relative;
-}
+//.btnBlock{
+//  display: flex;
+//  position: relative;
+//  margin-bottom: 45px;
+//
+//  @media (max-width: $middle) {
+//    position: static;
+//  }
+//}
 .close {
   visibility: hidden;
   position: absolute;
-  right: 45px;
+  //right: 45px;
   top: -6px;
   display: flex;
   justify-content: center;
@@ -56,6 +61,11 @@
   font-size: 20px;
   color: black;
   font-weight: 600;
+
+  @media (max-width: $middle) {
+    right: 0;
+    top: 0;
+  }
 }
 .close.active{
   visibility: visible;

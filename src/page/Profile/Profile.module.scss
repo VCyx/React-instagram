@@ -6,6 +6,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+  position: relative;
   .user {
     margin-left: 79px;
     display: flex;
@@ -13,6 +14,7 @@
     .avatar {
       width: 100px;
       height: 100px;
+      border-radius: 50%;
     }
 
     .status {
@@ -43,9 +45,7 @@
   .iconNone{
     cursor: pointer;
   }
- .menuPosition{
-   align-items: center;
- }
+
   .blockLine {
     display: flex;
   }
@@ -75,6 +75,11 @@
     width: 277px;
     height: 277px;
   }
+  .galleryImageBox {
+    border-radius: 15px 0 0 15px;
+    width: 100%;
+    height: 100%;
+  }
 
   .galleryHover {
     position: relative;
@@ -98,11 +103,17 @@
 ;
 
   .iconComment {
-    margin-left: 52px;
+    margin-left: 21px;
+    cursor: pointer
   }
 
   .iconCommentCount {
     margin: 0 2px 30px 0;
+  }
+  .iconCommentCountModal {
+    margin: 0 2px 30px 0;
+    color: #ABB2C1;
+    cursor: pointer;
   }
 
   .galleryHover:hover .imageHover {
@@ -114,6 +125,11 @@
   .galleryPosts:last-child {
     margin-bottom: 31px;
   }
+}
+.menuPosition{
+  position: absolute;
+  top: 59px;
+  right: 0;
 }
 
 @media (max-width: 1024px) {

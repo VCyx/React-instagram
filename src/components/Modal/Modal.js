@@ -1,42 +1,16 @@
 import Style from './Style.scss'
-import React, {useState} from 'react';
+import React from 'react';
 
 
-const Modal = ({picture, user, posts}) => {
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [cardId, setCardId] = useState(null)
-
-
-    const showModal = (id) => {
-        setCardId(id)
-        if (isModalOpen===false) {
-            setIsModalOpen(true)
-        } else {
-            setIsModalOpen(false)
-        }
-    };
-    const onClose = e => {
-        if (e.target.className !==
-            'modal' && 'modal-box-title' && 'modal-box-btn'
-        ) {
-            showModal()
-        }
-    }
-
+    const Modal = ({activeModal, setActiveModal, children}) => {
 
     return (
-        <div className='modal'>
-            <div className='modal-picture'>
-                {picture}
+        <div className={activeModal ? 'cont-modal active' : 'cont-modal'} onClick={()=>setActiveModal(false)}>
+        <div className={activeModal ? 'modal active' : 'modal'} onClick={e=>e.stopPropagation()}>
+            <div className='close-modal' onClick={()=>setActiveModal(false)}>
             </div>
-            <div className='modal-msg'>
-
-                <div className='modal-msg-user'>{user}user
-                <hr className='modal-msg-hr'></hr>
-                </div>
-                <div className='modal-msg-posts'>{posts}posts</div>
-                <div className='modal-msg-comments'>comments</div>
-            </div>
+            {children}
+        </div>
         </div>
     );
 };

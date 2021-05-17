@@ -1,0 +1,38 @@
+
+.authContainer {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authBox {
+  padding: 10px
+}
+
+.authTitle {
+  color: white;
+}
+
+.authPreLink {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.authLink {
+  color: white;
+  font-weight: bold;
+}
+
+.authLink:hover {
+  border-bottom: 1px solid white;
+}
+
+.authLogo {
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(128deg) brightness(190%) contrast(104%);
+}

@@ -24,6 +24,7 @@
 
   max-height: 162px;
   overflow: auto;
+  scrollbar-width: none;
 
   &::-webkit-scrollbar {
     width: 4px;
@@ -43,10 +44,13 @@
     margin-bottom: 24px;
 
     .avatar {
-      width: 30px;
-      height: 30px;
-      border-radius: 50px;
-      margin-right: 22px;
+      margin-right: 20px;
+
+      img {
+        width: 30px;
+        height: 30px;
+        border-radius: 50px;
+      }
     }
 
     .nickname {

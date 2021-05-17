@@ -1,6 +1,6 @@
 @import "src/static/styles/variables";
 
-  .showMore, .subscribe, .subscribePersonal{
+  .showMore, .subscribe, .subscribePersonal, .auth, .regist{
   border-radius: 30px;
   font-size: 14px;
   padding: 8px 28px;
@@ -20,11 +20,29 @@
 }
 .subscribe{
   background: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
-  font-size: 14px;
+  font-size: 10px;
   padding: 3px 10px;
   margin-bottom: 0;
+  margin-right: 3px;
+}
+
+.auth, .regist{
+  margin: 0 auto;
+  width: 230px;
+  border: 2px solid transparent;
 
 }
+.auth:hover, .regist:hover{
+  border: 2px solid #fbfffe;
+}
+
+.auth{
+  background: #00CECB;
+}
+.regist{
+  background: linear-gradient(85.98deg, #ff0c7a -11.6%, #ce467b 104.24%);
+}
+
 .subscribePersonal{
   margin-bottom: 16px;
  @media (max-width: 1024px) {
@@ -36,6 +54,7 @@
     margin-bottom: 11px;
   }
 }
+
 .btnSignIn{
   color: #3772ff;
   box-shadow: 0 0 0 1px #3772ff;

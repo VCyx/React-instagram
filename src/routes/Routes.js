@@ -1,21 +1,24 @@
-import { Switch, Route } from "react-router-dom";
-import Login from "../page/Login/Login";
-import Page404 from "../page/404/Page404";
-import Main from "../page/Main/Main";
-import Profile from "../page/Profile/Profile";
+import {Switch, Route} from "react-router-dom";
+import {authRoutes, publicRoutes} from "./AuthRoute";
 
-const Routes = () => {
-  return (
-    <>
-      <Switch>
-        <Route exact path="/" component={Main} />
-        <Route path="/login" component={Login} />
-        <Route path='/user/:name' component={Profile} />
-        <Route path="/404" component={Page404} />
-        <Route path="*" component={Page404} />
-      </Switch>
-    </>
-  );
+
+const Routes = (isAuths) => {
+    /** Нужно витянуть из стореджа isAuth  и заменть isAuths, Routes = ('isAuths' <-- єто удалить ) **/
+    let isAuth = isAuths;
+
+
+    return (
+        <>
+            <Switch>
+                {isAuth && authRoutes.map(({path, Component}) =>
+                    <Route key={path} path={path} component={Component} exact/>
+                )}
+                {publicRoutes.map(({path, Component}) =>
+                    <Route key={path} path={path} component={Component} exact/>
+                )}
+            </Switch>
+        </>
+    );
 };
 
 export default Routes;
