@@ -1,6 +1,6 @@
 @import "src/static/styles/variables.scss";
 
-.menu{
+.menu {
   max-width: 280px;
   background: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
   transform: translateY(-2000%);
@@ -8,37 +8,43 @@
   border-radius: 30px;
   position: absolute;
   right: 30px;
-  top: -30px;
+  top: -26px;
 
   @media (max-width: $middle) {
     top: -25px;
     right: 37px;
   }
 }
-.menu.active{
+
+.menu.active {
+  top: -30px;
   transform: translateX(0%);
 }
-.menuContent{
+
+.menuContent {
   display: flex;
   justify-content: flex-start;
   align-items: flex-end;
   cursor: default;
 }
-ul{
+
+ul {
   padding: 0;
-  .menuElement{
+
+  .menuElement {
     list-style: none;
     cursor: pointer;
     width: 276px;
     margin: 2px 0;
-    padding: 2px;
-    a{
+
+    a {
       color: white;
 
     }
   }
 }
-ul > .menuElement:hover{
+
+ul > .menuElement:hover {
   text-shadow: -1px -1px #000, 0 1px 0 #444;
   color: #1A1A1A;
   border: linear-gradient(85.98deg, #3772FF -11.6%, #00CECB 104.24%);
@@ -47,24 +53,19 @@ ul > .menuElement:hover{
 }
 
 @media (max-width: 480px) {
-  .menu{
-    width: 190px;
+  .menu {
+    width: 177px;
     margin-bottom: 1px;
     display: none;
-    @media (max-width: 365px) {
-      width: 240px
-    }
   }
-  .menuContent{
+  .menuContent {
     justify-content: space-evenly;
   }
-  .menu.active{
+  .menu.active {
     display: block;
   }
-  ul> .menuElement {
-    width: 186px;
-  }
-  ul > .menuElement:hover{
+  ul > .menuElement {
+    width: 175px;
   }
 }
 

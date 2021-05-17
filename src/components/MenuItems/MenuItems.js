@@ -1,14 +1,12 @@
 import React from "react";
 import style from "./MenuItems.module.scss";
-import { useHistory } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 
-const MenuItems = ({ active }) => {
+const MenuItems = ({active}) => {
   const history = useHistory();
 
   const exitHandler = () => {
-    history.push("/");
-
-    console.log("Exit");
+    history.push("/login");
   };
   const createHandler = () => {
     console.log("createHandler");

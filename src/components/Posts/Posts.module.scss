@@ -7,7 +7,7 @@
   flex-direction: column;
   align-items: flex-start;
 
-  @media (max-width: $middle)  {
+  @media (max-width: $middle) {
     position: relative;
   }
 
@@ -26,5 +26,16 @@
 
   .logo {
     margin-bottom: 19px;
+    @media (max-width: $phone) {
+      margin: 15px 0 22px 0;
+
+    }
+  }
+}
+
+@media (max-width: $phone) {
+  .logo > span > svg {
+    width: 52px;
+    height: 42px;
   }
 }
