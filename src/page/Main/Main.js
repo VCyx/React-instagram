@@ -5,16 +5,15 @@ import { useDispatch, useSelector } from "react-redux";
 import MainAside from "../../components/MainAside/MainAside";
 import { getPostsMain } from "../../@redux/posts/operations";
 import { getUser } from "../../@redux/users/operation";
+import { getPostsAll } from "../../@redux/posts/actions";
 
 const Main = () => {
   const dispatch = useDispatch();
 
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
-  // const postsStorage = useSelector((state) => state.postsReducer.posts);
-  // console.log("postsStorage", postsStorage);
-  const [posts, setPosts] = useState([]);
-  // console.log("postsPage", posts);
+  const loading = useSelector((state) => state.postsReducer.isLoading);
+  const posts = useSelector((state) => state.postsReducer.posts);
+  // console.log("posts", posts);
 
   window.onscroll = () => {
     if (
@@ -27,8 +26,7 @@ const Main = () => {
 
   const loadPage = async () => {
     const newPost = await getPostsMain(page, 3);
-    setPosts((prev) => [...prev, ...newPost]);
-    setLoading(false);
+    dispatch(getPostsAll(newPost));
   };
 
   useEffect(() => {

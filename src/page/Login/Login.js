@@ -29,7 +29,7 @@ const Login = observer(() => {
   /*
   Вот твое решение:
    */
-  const autUsers = useSelector((state) => state.userReducer.users.isAuth);
+  const autUser = useSelector((state) => state.userReducer.users.isAuth);
 
   const ecTrance = async () => {
     try {
@@ -46,7 +46,7 @@ const Login = observer(() => {
        *
        * по умолчанию в соредже нужно  isAuth: false
        * нужно закинуть в сторедж  isAuth: true # ниже строку удалить и удалить импорт Route в єтом файле **/
-      // const autUsers = Routes(true);
+      const autUsers = Routes(autUser);
       /** так же нужно  закинуть в стореж имя пользователя ( ник ) user а потом
        * из стореджа витянуть в местах  где нужно на странице **/
 
