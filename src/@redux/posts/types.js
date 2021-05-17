@@ -1,1 +1,2 @@
 export const LOAD_MAIN_POSTS = "LOAD_MAIN_POSTS";
+export const ADD_POST_COMMENT = "ADD_POST_COMMENT";
