@@ -4,28 +4,28 @@ import PostItem from "../PostItem/PostItem";
 import Icon from "../Icon/Icon";
 import MenuButton from "../MenuButton/MenuButton";
 
-const Posts = ({ posts }) => {
+const Posts = ({posts}) => {
   return (
     <>
       <section className={styles.postsContainer}>
         <div className={styles.logo}>
-          <Icon type="logo" />
+          <Icon type="logo"/>
         </div>
-        <MenuButton blue className={styles.menuSmallScreen} />
+        <MenuButton blue className={styles.menuSmallScreen}/>
 
         {posts &&
-          posts.map((post) => {
-            return (
-              <PostItem
-                key={post.id}
-                name={post.name}
-                picture={post.img}
-                likes={post.like}
-                comments={post.commentaries}
-                nickname={post.nickname}
-              />
-            );
-          })}
+        posts.map((post) => {
+          return (
+            <PostItem
+              key={post.id}
+              name={post.name}
+              picture={post.img}
+              likes={post.like}
+              comments={post.commentaries}
+              nickname={post.nickname}
+            />
+          );
+        })}
       </section>
     </>
   );

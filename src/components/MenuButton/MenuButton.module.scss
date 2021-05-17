@@ -36,19 +36,9 @@
 .blue {
   background: linear-gradient(268.34deg, #3772FF -16.83%, #00CECB 100%);
 }
-//.btnBlock{
-//  display: flex;
-//  position: relative;
-//  margin-bottom: 45px;
-//
-//  @media (max-width: $middle) {
-//    position: static;
-//  }
-//}
 .close {
   visibility: hidden;
   position: absolute;
-  //right: 45px;
   top: -6px;
   display: flex;
   justify-content: center;
@@ -62,10 +52,6 @@
   color: black;
   font-weight: 600;
 
-  @media (max-width: $middle) {
-    right: 0;
-    top: 0;
-  }
 }
 .close.active{
   visibility: visible;
