@@ -25,18 +25,22 @@ const Login = observer(() => {
             let auUser;
             if (isLogin) {
                 auUser = await login(email, password)
+
             } else {
                 auUser = await registration(email, password, nickname)
                 history.push(LOGIN_ROUTE)
             }
 
-            /**
-             *
-             * по умолчанию в соредже нужно  isAuth: false
-             * нужно закинуть в сторедж  isAuth: true # ниже строку удалить и удалить импорт Route в єтом файле **/
-            const autUsers = Routes(true)
-            /** так же нужно  закинуть в стореж имя пользователя ( ник ) user а потом
-             * из стореджа витянуть в местах  где нужно на странице **/
+
+
+
+            // /**
+            //  *
+            //  * по умолчанию в соредже нужно  isAuth: false
+            //  * нужно закинуть в сторедж  isAuth: true # ниже строку удалить и удалить импорт Route в єтом файле **/
+            // const autUsers = Routes(true)
+            // /** так же нужно  закинуть в стореж имя пользователя ( ник ) user а потом
+            //  * из стореджа витянуть в местах  где нужно на странице **/
 
             history.push(MAIN_ROUTE)
         } catch (e) {

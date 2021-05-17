@@ -1,12 +1,12 @@
 import {Switch, Route} from "react-router-dom";
 import {authRoutes, publicRoutes} from "./AuthRoute";
+import {useSelector} from "react-redux";
 
+const Routes = () => {
 
-const Routes = (isAuths) => {
-    /** Нужно витянуть из стореджа isAuth  и заменть isAuths, Routes = ('isAuths' <-- єто удалить ) **/
-    let isAuth = isAuths;
+    let isAuth = useSelector((state) => state.userReducer.users.isAuth);
 
-
+    console.log(isAuth)
     return (
         <>
             <Switch>
