@@ -4,6 +4,8 @@ import Profile from "../page/Profile/Profile";
 import Page404 from "../page/404/Page404";
 import Login from "../page/Login/Login";
 
+
+
 export const authRoutes = [
     {
         path: MAIN_ROUTE,
@@ -14,6 +16,8 @@ export const authRoutes = [
         Component: Profile
     }
 ]
+
+
 
 export const publicRoutes = [
     {
