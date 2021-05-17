@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
 import {
   LOGIN_ROUTE,
@@ -29,28 +29,20 @@ const Login = observer(() => {
   /*
   Вот твое решение:
    */
-  const autUser = useSelector((state) => state.userReducer.users.isAuth);
-
+  const autUserq = useSelector((state) => state.userReducer.users.isAuth);
   const ecTrance = async () => {
     try {
       let auUser;
       if (isLogin) {
         auUser = await login(email, password);
         dispatch(setUserLogin(auUser));
+
       } else {
         auUser = await registration(email, password, nickname);
         dispatch(setUserLogin(auUser));
         history.push(LOGIN_ROUTE);
       }
-
-      /**
-       *
-       * по умолчанию в соредже нужно  isAuth: false
-       * нужно закинуть в сторедж  isAuth: true # ниже строку удалить и удалить импорт Route в єтом файле **/
-      const autUsers = Routes(autUser);
-      /** так же нужно  закинуть в стореж имя пользователя ( ник ) user а потом
-       * из стореджа витянуть в местах  где нужно на странице **/
-
+       auUser = !!autUserq
       history.push(MAIN_ROUTE);
     } catch (e) {
       alert(e.response.data.message);
