@@ -10,7 +10,7 @@ const postsReducer = (state = initialState, action) => {
     case LOAD_MAIN_POSTS:
       return {
         ...state,
-        posts: [...state.posts, action.payload],
+        posts: state.posts.concat(action.payload),
         isLoading: false,
       };
     default:

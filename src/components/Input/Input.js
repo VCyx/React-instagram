@@ -1,16 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Input.module.scss";
 
-const Input = (comment) => {
+const Input = ({ comment, onSubmit }) => {
+  const [userComment, setUserComment] = useState("");
+
   if (comment) {
+    const handleChange = (e) => {
+      setUserComment(e.target.value);
+    };
+
     return (
-      <form className={style.commentContainer}>
+      <form
+        className={style.commentContainer}
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSubmit(userComment);
+        }}
+      >
         <input
           className={style.commentInput}
           type="text"
           placeholder="Ваш коментар"
+          value={userComment}
+          onChange={handleChange}
         />
-        <span className={style.send}>Надіслати</span>
+        <button type="submit" className={style.send}>
+          Надіслати
+        </button>
       </form>
     );
   }
