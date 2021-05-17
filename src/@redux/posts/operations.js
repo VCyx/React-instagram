@@ -8,3 +8,11 @@ export const getPosts = () => (dispatch) => {
     dispatch(getPostsAll(res.data.rows));
   });
 };
+
+export const getPostsMain = async (page, limit = 3) => {
+  return await fetch(
+    `http://176.105.100.114:7000/api/post/?limit=${limit}&page=${page}`
+  )
+    .then((res) => res.json())
+    .then((res) => res.rows);
+};
