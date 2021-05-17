@@ -42,7 +42,7 @@
     justify-content: space-between;
     margin: 30px 0;
   }
-  .iconNone{
+  .iconBlock{
     cursor: pointer;
   }
 
@@ -235,11 +235,12 @@
       }
     }
     .icon{
-      justify-content: flex-end;
+      width: 38px;
+      height: 30px;
+      margin-bottom: 45px;
     }
-    .iconNone {
-      display: none;
-
+    .menuPosition{
+      top: 38px;
     }
     .userStatus {
       width: 163px;

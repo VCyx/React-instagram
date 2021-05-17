@@ -1,6 +1,6 @@
 import React from "react";
 import style from "./MenuItems.module.scss";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const MenuItems = ({ active }) => {
   const history = useHistory();
@@ -18,10 +18,10 @@ const MenuItems = ({ active }) => {
       <div className={style.menuContent}>
         <ul>
           <li className={style.menuElement} onClick={createHandler}>
-            <Link to="/">Створити пост</Link>
+            <p>Створити пост</p>
           </li>
           <li className={style.menuElement} onClick={exitHandler}>
-            <Link to="/">Вихід</Link>
+            <p>Вихід</p>
           </li>
         </ul>
       </div>

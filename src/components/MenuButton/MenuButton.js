@@ -53,7 +53,7 @@ const MenuButton = ({ blue, className }) => {
             />
           </>
         )}
-        <MenuItems active={menuActive} />
+        <MenuItems active={menuActive}/>
       </div>
       {/*</div>*/}
     </>

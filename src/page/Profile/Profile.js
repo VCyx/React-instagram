@@ -61,7 +61,7 @@ const Profile = ({history, location: {state: {nick, avatar, userId}}}) => {
   return (
     <div className={styles.container}>
       <div className={styles.icon}>
-        <div className={styles.iconNone}>
+        <div className={styles.iconBlock}>
           <Icon
             className={styles.iconSize}
             type="logo"
