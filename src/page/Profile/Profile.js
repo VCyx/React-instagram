@@ -2,51 +2,58 @@ import React, {useEffect, useState} from "react";
 import styles from "./Profile.module.scss";
 import Icon from "../../components/Icon/Icon";
 import {withRouter} from "react-router";
-import Button from "../../components/Button/Button";
 import {GetPosts} from "../../api/InfinityScroll/GetPosts";
 import Loading from "../../components/Loading/Loading";
-import {avaURL} from "../../api/AxiosAPI";
-import MenuButton from "../../components/MenuButton/MenuButton";
+import {mainURL} from "../../api/AxiosAPI";
 import PropTypes from "prop-types";
 import Modal from "../../components/Modal/Modal";
 import userLogo from "../../assets/img/userLogo.png";
+import {useDispatch, useSelector} from "react-redux";
+import {useParams} from 'react-router-dom'
+import {getUserPage} from "../../@redux/users/operation";
+import BrokenLine from "../../components/BrokenLine/BrokenLine";
+import User from "../../components/User/User";
 
-const Profile = ({
-                   history,
-                   location: {
-                     state: {nick, avatar, userId},
-                   },
-                 }) => {
+const Profile = () => {
+
+  const paramsUrl = useParams();
+  const dispatch = useDispatch();
+
+  const user = useSelector(store => store.userReducer.user.data);
+  const {nick, avatar} = user;
+
   const [modalActive, setModalActive] = useState(false);
   const [showImg, setShowImg] = useState();
   const [showLike, setShowLike] = useState();
   const [showComments, setShowComments] = useState();
 
-  const URL = "http://176.105.100.114:7000/";
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
 
   window.onscroll = () => {
-    if (
-      document.documentElement.scrollHeight ===
-      document.documentElement.scrollTop + document.documentElement.clientHeight
-    ) {
+    if (document.documentElement.scrollHeight === document.documentElement.scrollTop + document.documentElement.clientHeight) {
       setPage((prev) => prev + 1);
     }
   };
-  useEffect(() => {
-    const loadPage = async () => {
-      const newPost = await GetPosts(page, 2, userId);
-      setPosts((prev) => [...prev, ...newPost]);
-      setLoading(false);
-    };
-    loadPage();
-  }, [page, userId]);
+
+
+  useEffect(()=>{
+    dispatch(getUserPage(paramsUrl.name))
+  },[dispatch, paramsUrl.name]);
 
   useEffect(() => {
     setLoading(true);
-  }, [userId]);
+  }, []);
+
+  useEffect(() => {
+    const loadPage = async () => {
+      const newPost = await GetPosts(page, 6, paramsUrl.name);
+      setPosts((prev) => [...prev, ...newPost]);
+      setLoading(false)
+    };
+    loadPage();
+  }, [page,paramsUrl.name]);
 
   const imageModal = (pic) => {
     setShowImg(pic);
@@ -60,79 +67,40 @@ const Profile = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.icon}>
-        <div className={styles.iconBlock}>
-          <Icon
-            className={styles.iconSize}
-            type="logo"
-            onClick={() => history.push("/")}
-          />
-        </div>
-        <div className={styles.menuPosition}>
-          <MenuButton blue/>
-        </div>
-      </div>
-      <div className={styles.user}>
-        <img className={styles.avatar} src={avaURL + avatar} alt="logo"/>
-        <div className={styles.status}>
-          <div className={styles.userInfo}>
-            <p className={styles.userName}>{nick}</p>
-            <Button subscribePersonal/>
-          </div>
-          <p className={styles.userStatus}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem,
-            dolores.
-          </p>
-        </div>
-      </div>
-      <div className={styles.blockLine}>
-        <div className={styles.lineBlue}/>
-        <div className={styles.lineLightBlue}/>
-        <div className={styles.lineGrey}/>
-      </div>
-      {loading ? (
-        <Loading loading={loading}/>
-      ) : (
-        <div className={styles.galleryPosts}>
+      <User nick={nick} avatar={avatar}/>
+       <BrokenLine/>
+      {loading ?
+        (<Loading loading={loading}/>) :
+        (<div className={styles.galleryPosts}>
           {posts &&
-          posts.map((post, index) => (
-            <div
-              key={index}
-              className={styles.galleryHover}
-              onClick={() => {
+             posts.map((post, index) => (
+            <div key={index} className={styles.galleryHover} onClick={() => {
                 setModalActive(true);
                 imageModal(post.img);
                 likeModal(post.like);
                 commentModal(post.commentCount);
-              }}
-            >
+              }}>
               <div className={styles.imageHover}>
                 <Icon type="like" color="white"/>
                 <span className={styles.iconCommentCount}>{post.like}</span>
-                <Icon
-                  className={styles.iconComment}
-                  type="comment"
-                  color="white"
-                />
-                <span className={styles.iconCommentCount}>
-                    {post.commentCount || 22}
-                  </span>{" "}
-                {/*Додати з сервера*/}
+                <Icon className={styles.iconComment} type="comment" color="white"/>
+                <span className={styles.iconCommentCount}>{Object.keys(post.commentaries).length }</span>{" "}
               </div>
               <img
                 className={styles.galleryImage}
-                src={URL + post.img}
+                src={mainURL + post.img}
                 alt="logo"
               />
             </div>
           ))}
-        </div>
-      )}
+        </div>)
+      }
+
       <Modal activeModal={modalActive} setActiveModal={setModalActive}>
         <div className="modal-picture">
           <img
             className={styles.galleryImageBox}
-            src={!!showImg ? URL + showImg : ""}
+            src={!!showImg ? mainURL + showImg : ""}
             alt="logo"
           />
         </div>

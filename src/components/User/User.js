@@ -1,30 +1,37 @@
-import React from "react";
-import {withRouter} from 'react-router-dom'
-import PropTypes from 'prop-types'
+import React from 'react';
+import styles from "../User/User.module.scss";
+import Icon from "../Icon/Icon";
+import MenuButton from "../MenuButton/MenuButton";
+import {avaURL} from "../../api/AxiosAPI";
+import Button from "../Button/Button";
+import {useHistory} from 'react-router-dom';
 
-const User = ({nick, avatar, history, userId, location}) => {
-  const openUserProfile = () => {
-      history.push(`/user/${nick}`, {
-        nick,
-        avatar,
-        userId
-      })
-  };
+const User = ({nick, avatar}) => {
+  const history = useHistory();
+
   return (
-    <div>
-      <ul>
-        <li style={{listStyle: 'none', cursor: 'pointer'}} onClick={openUserProfile}>
-          {nick}
-        </li>
-      </ul>
-    </div>
-  )
+    <>
+      <div className={styles.icon}>
+        <div className={styles.iconBlock}>
+          <Icon className={styles.iconSize} type="logo" onClick={() => history.push("/")}/>
+        </div>
+        <div className={styles.menuPosition}>
+          <MenuButton blue/>
+        </div>
+      </div>
+      <div className={styles.user}>
+        <img className={styles.avatar} src={avaURL + avatar} alt="logo"/>
+        <div className={styles.status}>
+          <div className={styles.userInfo}>
+            <p className={styles.userName}>{nick}</p>
+            <Button subscribePersonal/>
+          </div>
+          <p className={styles.userStatus}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem, dolores.
+          </p>
+        </div>
+      </div>
+    </>
+  );
 };
 
-User.propTypes = {
-  name: PropTypes.string,
-  avatar: PropTypes.string,
-  postsUserId: PropTypes.number
-};
-
-export default withRouter(User);
+export default User;
