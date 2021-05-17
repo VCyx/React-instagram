@@ -9,12 +9,17 @@ const Input = ({ comment, onSubmit }) => {
       setUserComment(e.target.value);
     };
 
+    const clearInput = () => {
+      setUserComment("");
+    };
+
     return (
       <form
         className={style.commentContainer}
         onSubmit={(e) => {
           e.preventDefault();
           onSubmit(userComment);
+          clearInput();
         }}
       >
         <input

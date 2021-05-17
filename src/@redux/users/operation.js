@@ -26,8 +26,18 @@ export const toggleLikePost = (postID) => {
   });
 };
 
-export const addComment = ({ postID, comment }) => {
-  axios.post(ADD_COMMENT + postID, { comment: comment }).then((res) => {
-    console.log(res);
-  });
+export const addComment = ({ postID, comment, token }) => {
+  console.log("postid", postID);
+  axios
+    .post(
+      ADD_COMMENT + postID,
+      { comment: comment },
+      { headers: { Authorization: `Bearer ${token}` } }
+    )
+    .then((res) => {
+      console.log("comment added");
+    })
+    .catch((er) => {
+      console.log(er);
+    });
 };
