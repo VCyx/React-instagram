@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import style from "./Input.module.scss";
 
-const Input = ({ comment, onSubmit }) => {
+const Input = ({ comment, onSubmit, modalInput }) => {
   const [userComment, setUserComment] = useState("");
 
   if (comment) {
@@ -10,23 +10,13 @@ const Input = ({ comment, onSubmit }) => {
     };
 
     return (
-      <form
-        className={style.commentContainer}
-        onSubmit={(e) => {
+      <form className={style.commentContainer} onSubmit={(e) => {
           e.preventDefault();
           onSubmit(userComment);
-        }}
-      >
-        <input
-          className={style.commentInput}
-          type="text"
-          placeholder="Ваш коментар"
-          value={userComment}
-          onChange={handleChange}
+        }}>
+        <input className={ modalInput ? style.modalUserComment :style.commentInput} type="text" placeholder="Ваш коментар" value={userComment} onChange={handleChange}
         />
-        <button type="submit" className={style.send}>
-          Надіслати
-        </button>
+        <button type="submit" className={modalInput ? style.modalUserSend : style.send}>Надіслати</button>
       </form>
     );
   }

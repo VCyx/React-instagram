@@ -7,9 +7,10 @@ const MenuItems = ({active}) => {
 
   const exitHandler = () => {
     history.push("/login");
+    localStorage.removeItem('token')
   };
   const createHandler = () => {
-    console.log("createHandler");
+
   };
   return (
     <div className={active ? `${style.active} ${style.menu}` : style["menu"]}>

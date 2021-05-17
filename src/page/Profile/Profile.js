@@ -1,18 +1,19 @@
 import React, {useEffect, useState} from "react";
 import styles from "./Profile.module.scss";
+import style from '../../components/Modal/Modal.module.scss'
 import Icon from "../../components/Icon/Icon";
 import {withRouter} from "react-router";
 import {GetPosts} from "../../api/InfinityScroll/GetPosts";
 import Loading from "../../components/Loading/Loading";
-import {mainURL} from "../../api/AxiosAPI";
+import {avaURL, mainURL} from "../../api/AxiosAPI";
 import PropTypes from "prop-types";
 import Modal from "../../components/Modal/Modal";
-import userLogo from "../../assets/img/userLogo.png";
 import {useDispatch, useSelector} from "react-redux";
 import {useParams} from 'react-router-dom'
 import {getUserPage} from "../../@redux/users/operation";
 import BrokenLine from "../../components/BrokenLine/BrokenLine";
 import User from "../../components/User/User";
+import Input from "../../components/Input/Input";
 
 const Profile = () => {
 
@@ -26,6 +27,7 @@ const Profile = () => {
   const [showImg, setShowImg] = useState();
   const [showLike, setShowLike] = useState();
   const [showComments, setShowComments] = useState();
+  const [comment, setComment] = useState();
 
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
@@ -37,7 +39,6 @@ const Profile = () => {
     }
   };
 
-
   useEffect(()=>{
     dispatch(getUserPage(paramsUrl.name))
   },[dispatch, paramsUrl.name]);
@@ -48,22 +49,12 @@ const Profile = () => {
 
   useEffect(() => {
     const loadPage = async () => {
-      const newPost = await GetPosts(page, 6, paramsUrl.name);
+      const newPost = await GetPosts(page, 2, paramsUrl.name);
       setPosts((prev) => [...prev, ...newPost]);
       setLoading(false)
     };
     loadPage();
   }, [page,paramsUrl.name]);
-
-  const imageModal = (pic) => {
-    setShowImg(pic);
-  };
-  const likeModal = (lik) => {
-    setShowLike(lik);
-  };
-  const commentModal = (com) => {
-    setShowComments(com);
-  };
 
   return (
     <div className={styles.container}>
@@ -76,9 +67,10 @@ const Profile = () => {
              posts.map((post, index) => (
             <div key={index} className={styles.galleryHover} onClick={() => {
                 setModalActive(true);
-                imageModal(post.img);
-                likeModal(post.like);
-                commentModal(post.commentCount);
+                setShowImg(post.img);
+                setShowLike(post.like);
+                setShowComments(Object.keys(post.commentaries).length);
+                setComment(post.commentaries);
               }}>
               <div className={styles.imageHover}>
                 <Icon type="like" color="white"/>
@@ -86,33 +78,39 @@ const Profile = () => {
                 <Icon className={styles.iconComment} type="comment" color="white"/>
                 <span className={styles.iconCommentCount}>{Object.keys(post.commentaries).length }</span>{" "}
               </div>
-              <img
-                className={styles.galleryImage}
-                src={mainURL + post.img}
-                alt="logo"
-              />
+              <img className={styles.galleryImage} src={mainURL + post.img} alt="logo"/>
             </div>
           ))}
-        </div>)
-      }
+        </div>
+      )}
 
       <Modal activeModal={modalActive} setActiveModal={setModalActive}>
         <div className="modal-picture">
-          <img
-            className={styles.galleryImageBox}
-            src={!!showImg ? mainURL + showImg : ""}
-            alt="logo"
-          />
+          <img className={styles.galleryImageBox} src={!!showImg ? mainURL + showImg : ""} alt="logo"/>
         </div>
         <div className="modal-msg">
           <div className="modal-msg-user">
             <div className="modal-msg-user-box">
-              <img className={styles.avatar} src={userLogo} alt="logo"/>
+              <img className={style.avatar} src={avaURL + avatar} alt="logo"/>
               <div className="modal-msg-user-nick">{nick}</div>
             </div>
             <hr className="modal-msg-hr"/>
           </div>
-          <div className="modal-msg-posts">posts</div>
+          <div className="modal-msg-posts">
+
+            {modalActive &&  comment.map((comment)=>{
+             return (
+               <div className={style.commentContainer}>
+                <div className={style.commentUserBlockInfo}>
+                  <img className={style.avatar} src={avaURL + avatar} alt="avatar"/>
+                  <p>{nick}</p>
+                </div>
+                 <p className={style.commentUser}>{comment.comment}</p>
+               </div>
+             )
+            })}
+
+          </div>
           <div className="modal-msg-like">
             <Icon type="like" color="#ABB2C1" className={styles.iconComment}/>
             <span className={styles.iconCommentCountModal}>{showLike}</span>
@@ -122,10 +120,12 @@ const Profile = () => {
               color="#ABB2C1"
             />
             <span className={styles.iconCommentCountModal}>
-              {showComments || 22}
+              {showComments}
             </span>
           </div>
-          <div className="modal-msg-comments">comments</div>
+          <div className="modal-msg-comments">
+            <Input comment modalInput />
+          </div>
         </div>
       </Modal>
     </div>
