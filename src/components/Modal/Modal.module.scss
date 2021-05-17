@@ -1,0 +1,24 @@
+@import "src/static/styles/main.scss";
+.avatar{
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  cursor: pointer;
+  padding-right: 10px;
+}
+.commentContainer{
+  display: flex;
+  flex-direction: column;
+  margin: 10px 10px;
+  align-items: flex-start;
+}
+.commentUserBlockInfo{
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.commentUser{
+  width: 150px ;
+  text-align: left;
+  word-wrap: break-word
+}
