@@ -39,6 +39,7 @@ const Login = observer(() => {
         dispatch(setUserLogin(auUser));
       } else {
         auUser = await registration(email, password, nickname);
+        dispatch(setUserLogin(auUser));
         history.push(LOGIN_ROUTE);
       }
 

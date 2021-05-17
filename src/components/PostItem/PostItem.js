@@ -5,14 +5,22 @@ import Comments from "../Comments/Comments";
 import Input from "../Input/Input";
 import { avaURL, mainURL } from "../../api/AxiosAPI";
 import PostHoverLike from "../PostHoverLike/PostHoverLike";
+import { addComment, toggleLikePost } from "../../@redux/users/operation";
 
-const PostItem = ({ name, picture, likes, comments, nickname }) => {
+const PostItem = ({ id, name, picture, likes, comments, nickname }) => {
   const countObjectKeys = (object) => {
     return Object.keys(object).length;
   };
 
-  const toggleLike = () => {
+  const toggleLike = (postID) => {
+    toggleLikePost(postID);
     console.log("Like!");
+  };
+
+  const onSubmit = (comment) => {
+    console.log("comment", comment);
+    addComment({ id, comment });
+    console.log("Submit!");
   };
 
   return (
@@ -23,7 +31,7 @@ const PostItem = ({ name, picture, likes, comments, nickname }) => {
         </div>
         <p className={styles.userName}>{nickname.nick}</p>
       </div>
-      <div className={styles.postPicture} onDoubleClick={toggleLike}>
+      <div className={styles.postPicture} onDoubleClick={() => toggleLike(id)}>
         <img src={mainURL + picture} alt={`${name} post`} />
         <PostHoverLike className={styles.hoverLike} />
       </div>
@@ -40,7 +48,7 @@ const PostItem = ({ name, picture, likes, comments, nickname }) => {
         />
       </div>
       <Comments comments={comments} />
-      <Input comment />
+      <Input comment onSubmit={onSubmit} />
     </div>
   );
 };

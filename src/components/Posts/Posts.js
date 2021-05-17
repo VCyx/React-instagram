@@ -18,6 +18,7 @@ const Posts = ({ posts }) => {
             return (
               <PostItem
                 key={post.id}
+                id={post.id}
                 name={post.name}
                 picture={post.img}
                 likes={post.like}
