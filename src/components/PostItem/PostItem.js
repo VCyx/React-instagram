@@ -11,6 +11,10 @@ const PostItem = ({ name, picture, likes, comments, nickname }) => {
     return Object.keys(object).length;
   };
 
+  const toggleLike = () => {
+    console.log("Like!");
+  };
+
   return (
     <div className={styles.container}>
       <div className={styles.header}>
@@ -19,7 +23,7 @@ const PostItem = ({ name, picture, likes, comments, nickname }) => {
         </div>
         <p className={styles.userName}>{nickname.nick}</p>
       </div>
-      <div className={styles.postPicture}>
+      <div className={styles.postPicture} onDoubleClick={toggleLike}>
         <img src={mainURL + picture} alt={`${name} post`} />
         <PostHoverLike className={styles.hoverLike} />
       </div>
