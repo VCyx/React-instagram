@@ -34,14 +34,27 @@
   max-width: 590px;
   max-height: 590px;
 
+  cursor: pointer;
+  margin-bottom: 29px;
+
+  position: relative;
+
+  .hoverLike {
+    display: none;
+  }
+
+  &:hover {
+    .hoverLike {
+      display: block;
+    }
+  }
+
   img {
     height: 100%;
     width: 100%;
     object-fit: cover;
     border-radius: 30px;
   }
-
-  margin-bottom: 29px;
 }
 
 .footerIcons {

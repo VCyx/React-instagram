@@ -4,6 +4,7 @@ import IconWithCount from "../IconWithCount/IconWithCount";
 import Comments from "../Comments/Comments";
 import Input from "../Input/Input";
 import { avaURL, mainURL } from "../../api/AxiosAPI";
+import PostHoverLike from "../PostHoverLike/PostHoverLike";
 
 const PostItem = ({ name, picture, likes, comments, nickname }) => {
   const countObjectKeys = (object) => {
@@ -20,6 +21,7 @@ const PostItem = ({ name, picture, likes, comments, nickname }) => {
       </div>
       <div className={styles.postPicture}>
         <img src={mainURL + picture} alt={`${name} post`} />
+        <PostHoverLike className={styles.hoverLike} />
       </div>
       <div className={styles.footerIcons}>
         <IconWithCount
