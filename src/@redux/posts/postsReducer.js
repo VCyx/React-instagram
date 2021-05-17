@@ -8,7 +8,11 @@ const initialState = {
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_MAIN_POSTS:
-      return { ...state, posts: action.payload, isLoading: false };
+      return {
+        ...state,
+        posts: [...state.posts, action.payload],
+        isLoading: false,
+      };
     default:
       return state;
   }
