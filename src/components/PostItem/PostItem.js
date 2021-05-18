@@ -5,11 +5,7 @@ import Comments from "../Comments/Comments";
 import Input from "../Input/Input";
 import { avaURL, mainURL } from "../../api/AxiosAPI";
 import PostHoverLike from "../PostHoverLike/PostHoverLike";
-import {
-  addComment,
-  getOnePost,
-  toggleLikePost,
-} from "../../@redux/posts/operations";
+import { addComment, toggleLikePost } from "../../@redux/posts/operations";
 import { useDispatch, useSelector } from "react-redux";
 
 const PostItem = ({ id, name, picture, likes, comments, nickname }) => {
@@ -26,12 +22,7 @@ const PostItem = ({ id, name, picture, likes, comments, nickname }) => {
   };
 
   const onSubmit = (comment) => {
-    addComment({ postID: id, comment: comment, token: token });
-
-    // to draw comment, when it hit backend
-    setTimeout(() => {
-      dispatch(getOnePost(id));
-    }, 0);
+    dispatch(addComment({ postID: id, comment: comment, token: token }));
   };
 
   return (

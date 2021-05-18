@@ -32,7 +32,10 @@ const userReducer = (state = initialState, action) => {
       return { ...state, users: { ...state.users, isAuth: action.payload } };
     }
     case SET_SUBSCRIBED_USERS:
-      return { ...state, user: { ...state.user, subscribed: action.payload } };
+      const newData = action.payload.map((user) => {
+        return user.nickname;
+      });
+      return { ...state, user: { ...state.user, subscribed: newData } };
 
     default:
       return state;

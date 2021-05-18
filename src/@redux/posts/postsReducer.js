@@ -17,8 +17,9 @@ const postsReducer = (state = initialState, action) => {
       const posts = state.posts;
       const newPosts = posts.map((post) => {
         if (post.id === action.payload.postID) {
-          const updatedPost = action.payload.post;
-          return (posts[posts.indexOf(post)] = updatedPost);
+          const newPost = posts[posts.indexOf(post)];
+          newPost.commentaries = action.payload.comment;
+          return newPost;
         } else {
           return post;
         }

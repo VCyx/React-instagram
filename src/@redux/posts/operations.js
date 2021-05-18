@@ -19,21 +19,13 @@ export const getPostsMain = async (page, limit = 3) => {
     .then((res) => res.rows);
 };
 
-export const getOnePost = (postID) => (dispatch) => {
-  return fetch(`http://176.105.100.114:7000/api/post/${postID}`)
-    .then((res) => res.json())
-    .then((res) => {
-      dispatch(addPostComment(postID, res));
-    });
-};
-
 export const toggleLikePost = (postID) => {
   axios.put(TOGGLE_LIKE + postID, {}).then((res) => {
     console.log(res);
   });
 };
 
-export const addComment = ({ postID, comment, token }) => {
+export const addComment = ({ postID, comment, token }) => (dispatch) => {
   axios
     .post(
       ADD_COMMENT + postID,
@@ -41,7 +33,8 @@ export const addComment = ({ postID, comment, token }) => {
       { headers: { Authorization: `Bearer ${token}` } }
     )
     .then((res) => {
-      console.log("comment added");
+      console.log("comment added", res.data);
+      dispatch(addPostComment(postID, res.data));
     })
     .catch((er) => {
       console.log(er);
