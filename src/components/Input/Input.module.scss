@@ -33,6 +33,36 @@
     }
   }
 }
+
+.modalUserComment{
+  background: #F5F7FB;
+  border: 1px solid #ABB2C1;
+  border-radius: 50px;
+  width: 132px;
+  padding: 5px 106px 7px 10px;
+  outline: none;
+  @media (max-width: $middle) {
+    width: 107px;
+    padding: 5px 85px 7px 10px;
+    font-size: 12px;
+  }
+};
+.modalUserSend{
+  cursor: pointer;
+  color: #ABB2C1;
+  font-size: 14px;
+  position: absolute;
+  top: 20%;
+  right: 30px;
+  @media (max-width: $middle) {
+    right: 14px;
+    font-size: 13px;
+  }
+};
+
+
+
+
 .autIpn{
   width: 40%;
   background: white;
