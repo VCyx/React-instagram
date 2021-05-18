@@ -28,7 +28,7 @@ const userReducer = (state = initialState, action) => {
     case LOAD_USER_SUCCESS:
       return { ...state, users: { ...state.users, data: action.payload } };
     case GET_USER:
-      return { ...state, user: { data: action.payload } };
+      return { ...state, user: { ...state.user, data: action.payload } };
     case SET_USER_LOGIN: {
       return { ...state, users: { ...state.users, isAuth: action.payload } };
     }
