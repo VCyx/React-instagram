@@ -4,11 +4,6 @@ import Posts from "../../components/Posts/Posts";
 import { useDispatch, useSelector } from "react-redux";
 import MainAside from "../../components/MainAside/MainAside";
 import { getPostsMain } from "../../@redux/posts/operations";
-import {
-  getRandomUsers,
-  getUser,
-  getUsersSubscribed,
-} from "../../@redux/users/operation";
 import { getPostsAll } from "../../@redux/posts/actions";
 
 const Main = () => {
@@ -35,9 +30,6 @@ const Main = () => {
 
   useEffect(() => {
     loadPage();
-    dispatch(getUser());
-    dispatch(getUsersSubscribed());
-    dispatch(getRandomUsers());
   }, [page]);
 
   if (loading) {

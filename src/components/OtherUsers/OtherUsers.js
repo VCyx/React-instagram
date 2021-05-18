@@ -18,7 +18,7 @@ const OtherUsers = ({ title, users, recommendation }) => {
         <p className={style.headerItem}>Переглянути всі</p>
       </div>
       <ul className={style.usersContainer}>
-        {users.length > 0 ? (
+        {users && users.length > 0 ? (
           users.map((user) => {
             return (
               <li
