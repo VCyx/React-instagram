@@ -56,6 +56,7 @@ const Profile = () => {
     loadPage();
   }, [page,paramsUrl.name]);
 
+  console.log("posts", posts)
   return (
     <div className={styles.container}>
       <User nick={nick} avatar={avatar}/>
@@ -70,7 +71,7 @@ const Profile = () => {
                 setShowImg(post.img);
                 setShowLike(post.like);
                 setShowComments(Object.keys(post.commentaries).length);
-                setComment(post.commentaries);
+                setComment(post);
               }}>
               <div className={styles.imageHover}>
                 <Icon type="like" color="white"/>
