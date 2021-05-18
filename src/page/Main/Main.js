@@ -4,7 +4,11 @@ import Posts from "../../components/Posts/Posts";
 import { useDispatch, useSelector } from "react-redux";
 import MainAside from "../../components/MainAside/MainAside";
 import { getPostsMain } from "../../@redux/posts/operations";
-import { getUser } from "../../@redux/users/operation";
+import {
+  getRandomUsers,
+  getUser,
+  getUsersSubscribed,
+} from "../../@redux/users/operation";
 import { getPostsAll } from "../../@redux/posts/actions";
 
 const Main = () => {
@@ -13,7 +17,7 @@ const Main = () => {
   const [page, setPage] = useState(1);
   const loading = useSelector((state) => state.postsReducer.isLoading);
   const posts = useSelector((state) => state.postsReducer.posts);
-  console.log("posts", posts);
+  // console.log("posts", posts);
 
   window.onscroll = () => {
     if (
@@ -32,6 +36,8 @@ const Main = () => {
   useEffect(() => {
     loadPage();
     dispatch(getUser());
+    dispatch(getUsersSubscribed());
+    dispatch(getRandomUsers());
   }, [page]);
 
   if (loading) {

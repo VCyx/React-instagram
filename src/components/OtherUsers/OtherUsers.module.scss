@@ -1,6 +1,7 @@
 
 .mainContainer {
   margin: 0 17px 50px 13px;
+  min-width: 200px;
 }
 
 .headerContainer {
@@ -60,6 +61,10 @@
       text-overflow: ellipsis;
       margin-right: auto;
     }
+  }
+  .noSubscribe {
+    font-size: 12px;
+    color: white;
   }
 }
 

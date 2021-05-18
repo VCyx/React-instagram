@@ -9,12 +9,18 @@ const Input = ({ comment, onSubmit, modalInput }) => {
       setUserComment(e.target.value);
     };
 
+    const clearInput = () => {
+      setUserComment("");
+    };
+
     return (
       <form className={style.commentContainer} onSubmit={(e) => {
           e.preventDefault();
           onSubmit(userComment);
-        }}>
-        <input className={ modalInput ? style.modalUserComment :style.commentInput} type="text" placeholder="Ваш коментар" value={userComment} onChange={handleChange}
+          clearInput();
+        }}
+      >
+        <input className={ modalInput ? style.modalUserComment : style.commentInput} type="text" placeholder="Ваш коментар" value={userComment} onChange={handleChange}
         />
         <button type="submit" className={modalInput ? style.modalUserSend : style.send}>Надіслати</button>
       </form>

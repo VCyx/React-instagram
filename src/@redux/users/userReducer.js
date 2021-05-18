@@ -1,5 +1,11 @@
-
-import { LOAD_USER_REQUEST, LOAD_USER_SUCCESS, GET_USER,SET_USER_LOGIN } from "./type";
+import {
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+  GET_USER,
+  SET_USER_LOGIN,
+  SET_SUBSCRIBED_USERS,
+  SET_RANDOM_USERS,
+} from "./type";
 
 const initialState = {
   users: {
@@ -7,11 +13,12 @@ const initialState = {
     isLoading: true,
     posts: [],
     isAuth: localStorage.getItem("token") || false,
-    user: {},
   },
-  user:{
-     data: {}
-  }
+  user: {
+    data: {},
+    subscribed: [],
+    randomUsers: [],
+  },
 };
 
 const userReducer = (state = initialState, action) => {
@@ -20,11 +27,28 @@ const userReducer = (state = initialState, action) => {
       return { ...state, users: { ...state.users, isLoading: action.payload } };
     case LOAD_USER_SUCCESS:
       return { ...state, users: { ...state.users, data: action.payload } };
-   case GET_USER:
-      return { ...state, user: {data: action.payload }};
+    case GET_USER:
+      return { ...state, user: { data: action.payload } };
     case SET_USER_LOGIN: {
       return { ...state, users: { ...state.users, isAuth: action.payload } };
     }
+    case SET_SUBSCRIBED_USERS:
+      const newData = action.payload.map((user) => {
+        return user.nickname;
+      });
+      return { ...state, user: { ...state.user, subscribed: newData } };
+    case SET_RANDOM_USERS:
+      const randomUsers = [];
+
+      action.payload.map((user) => {
+        state.user.subscribed.map((sub) => {
+          // todo and not my user id
+          if (sub.id !== user.id) {
+            randomUsers.push(user);
+          }
+        });
+      });
+      return { ...state, user: { ...state.user, randomUsers: randomUsers } };
 
     default:
       return state;

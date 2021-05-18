@@ -5,9 +5,13 @@ import Comments from "../Comments/Comments";
 import Input from "../Input/Input";
 import { avaURL, mainURL } from "../../api/AxiosAPI";
 import PostHoverLike from "../PostHoverLike/PostHoverLike";
-import { addComment, toggleLikePost } from "../../@redux/users/operation";
+import { addComment, toggleLikePost } from "../../@redux/posts/operations";
+import { useDispatch, useSelector } from "react-redux";
 
 const PostItem = ({ id, name, picture, likes, comments, nickname }) => {
+  const token = useSelector((state) => state.userReducer.users.isAuth);
+  const dispatch = useDispatch();
+
   const countObjectKeys = (object) => {
     return Object.keys(object).length;
   };
@@ -18,9 +22,7 @@ const PostItem = ({ id, name, picture, likes, comments, nickname }) => {
   };
 
   const onSubmit = (comment) => {
-    console.log("comment", comment);
-    addComment({ id, comment });
-    console.log("Submit!");
+    dispatch(addComment({ postID: id, comment: comment, token: token }));
   };
 
   return (

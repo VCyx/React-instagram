@@ -6,8 +6,14 @@ import MenuButton from "../MenuButton/MenuButton";
 import styles from "./MainAside.module.scss";
 
 const MainAside = () => {
-  // всі юзери
-  const users = useSelector((state) => state.userReducer.users.data);
+  const userSubscribedUsers = useSelector(
+    (state) => state.userReducer.user.subscribed
+  );
+  const randomUsers = useSelector(
+    (state) => state.userReducer.user.randomUsers
+  );
+
+  // console.log("subs", userSubscribedUsers);
 
   return (
     <>
@@ -15,8 +21,8 @@ const MainAside = () => {
         <MenuButton />
       </div>
       <UserContainer />
-      <OtherUsers title={"Розповіді"} users={users} />
-      <OtherUsers title={"Рекомендації"} users={users} recommendation />
+      <OtherUsers title={"Розповіді"} users={userSubscribedUsers} />
+      <OtherUsers title={"Рекомендації"} users={randomUsers} recommendation />
     </>
   );
 };

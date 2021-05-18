@@ -18,26 +18,35 @@ const OtherUsers = ({ title, users, recommendation }) => {
         <p className={style.headerItem}>Переглянути всі</p>
       </div>
       <ul className={style.usersContainer}>
-        {users.map((user) => {
-          return (
-            <li
-              onClick={() => checkUser(user.id)}
-              className={style.usersItem}
-              key={user.userId}
-            >
-              <div className={style.avatar}>
-                <img
-                  src={avaURL + user.avatar}
-                  alt="Avatar"
-                  width="30"
-                  height="30"
-                />
-              </div>
-              <span className={style.nickname}>{user.nick}</span>
-              <span> {recommendation && <Button subscribe />}</span>
-            </li>
-          );
-        })}
+        {users.length > 0 ? (
+          users.map((user) => {
+            return (
+              <li
+                onClick={() => checkUser(user.id)}
+                className={style.usersItem}
+                key={user.userId}
+              >
+                <div className={style.avatar}>
+                  <img
+                    src={avaURL + user.avatar}
+                    alt="Avatar"
+                    width="30"
+                    height="30"
+                  />
+                </div>
+                <span className={style.nickname}>{user.nick}</span>
+                <span>
+                  {" "}
+                  {recommendation && (
+                    <Button subscribe subscribeUserID={user.userId} />
+                  )}
+                </span>
+              </li>
+            );
+          })
+        ) : (
+          <li className={style.noSubscribe}>No subscribed users!</li>
+        )}
       </ul>
     </div>
   );

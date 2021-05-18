@@ -1,7 +1,9 @@
 import axios from "axios";
-import { getPostsAll } from "./actions";
+import { addPostComment, getPostsAll } from "./actions";
 
 const URL_GET_POSTS = `http://176.105.100.114:7000/api/post`;
+const TOGGLE_LIKE = `http://176.105.100.114:7000/api/post/like/`;
+const ADD_COMMENT = `http://176.105.100.114:7000/api/post/comment/`;
 
 export const getPosts = () => (dispatch) => {
   return axios(URL_GET_POSTS).then((res) => {
@@ -15,4 +17,26 @@ export const getPostsMain = async (page, limit = 3) => {
   )
     .then((res) => res.json())
     .then((res) => res.rows);
+};
+
+export const toggleLikePost = (postID) => {
+  axios.put(TOGGLE_LIKE + postID, {}).then((res) => {
+    console.log(res);
+  });
+};
+
+export const addComment = ({ postID, comment, token }) => (dispatch) => {
+  axios
+    .post(
+      ADD_COMMENT + postID,
+      { comment: comment },
+      { headers: { Authorization: `Bearer ${token}` } }
+    )
+    .then((res) => {
+      console.log("comment added", res.data);
+      dispatch(addPostComment(postID, res.data));
+    })
+    .catch((er) => {
+      console.log(er);
+    });
 };
