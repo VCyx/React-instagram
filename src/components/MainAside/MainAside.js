@@ -6,8 +6,12 @@ import MenuButton from "../MenuButton/MenuButton";
 import styles from "./MainAside.module.scss";
 
 const MainAside = () => {
-  // всі юзери
   const users = useSelector((state) => state.userReducer.users.data);
+  const userSubscribedUsers = useSelector(
+    (state) => state.userReducer.user.subscribed
+  );
+
+  // console.log("subs", userSubscribedUsers);
 
   return (
     <>
@@ -15,7 +19,7 @@ const MainAside = () => {
         <MenuButton />
       </div>
       <UserContainer />
-      <OtherUsers title={"Розповіді"} users={users} />
+      <OtherUsers title={"Розповіді"} users={userSubscribedUsers} />
       <OtherUsers title={"Рекомендації"} users={users} recommendation />
     </>
   );

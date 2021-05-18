@@ -4,7 +4,7 @@ import Posts from "../../components/Posts/Posts";
 import { useDispatch, useSelector } from "react-redux";
 import MainAside from "../../components/MainAside/MainAside";
 import { getPostsMain } from "../../@redux/posts/operations";
-import { getUser } from "../../@redux/users/operation";
+import { getUser, getUsersSubscribed } from "../../@redux/users/operation";
 import { getPostsAll } from "../../@redux/posts/actions";
 
 const Main = () => {
@@ -32,6 +32,7 @@ const Main = () => {
   useEffect(() => {
     loadPage();
     dispatch(getUser());
+    dispatch(getUsersSubscribed());
   }, [page]);
 
   if (loading) {
