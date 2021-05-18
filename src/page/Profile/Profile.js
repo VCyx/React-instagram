@@ -71,7 +71,7 @@ const Profile = () => {
                 setShowImg(post.img);
                 setShowLike(post.like);
                 setShowComments(Object.keys(post.commentaries).length);
-                setComment(post);
+                setComment(post.commentaries);
               }}>
               <div className={styles.imageHover}>
                 <Icon type="like" color="white"/>
@@ -99,17 +99,18 @@ const Profile = () => {
           </div>
           <div className="modal-msg-posts">
 
-            {modalActive &&  comment.map((comment)=>{
-             return (
-               <div className={style.commentContainer}>
-                <div className={style.commentUserBlockInfo}>
-                  <img className={style.avatar} src={avaURL + avatar} alt="avatar"/>
-                  <p>{nick}</p>
+            {modalActive &&
+             comment.map((comment)=>{
+              return (
+                <div className={style.commentContainer}>
+                 <div className={style.commentUserBlockInfo}>
+                   <img className={style.avatar} src={avaURL + avatar} alt="avatar"/>
+                  </div>
+                  <p className={style.commentUser}>{comment.comment}</p>
                 </div>
-                 <p className={style.commentUser}>{comment.comment}</p>
-               </div>
-             )
-            })}
+              )
+             })
+            }
 
           </div>
           <div className="modal-msg-like">
