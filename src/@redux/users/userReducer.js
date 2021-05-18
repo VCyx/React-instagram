@@ -4,6 +4,7 @@ import {
   GET_USER,
   SET_USER_LOGIN,
   SET_SUBSCRIBED_USERS,
+  SET_RANDOM_USERS,
 } from "./type";
 
 const initialState = {
@@ -12,11 +13,11 @@ const initialState = {
     isLoading: true,
     posts: [],
     isAuth: localStorage.getItem("token") || false,
-    user: {},
   },
   user: {
     data: {},
     subscribed: [],
+    randomUsers: [],
   },
 };
 
@@ -36,6 +37,18 @@ const userReducer = (state = initialState, action) => {
         return user.nickname;
       });
       return { ...state, user: { ...state.user, subscribed: newData } };
+    case SET_RANDOM_USERS:
+      const randomUsers = [];
+
+      action.payload.map((user) => {
+        state.user.subscribed.map((sub) => {
+          // todo and not my user id
+          if (sub.id !== user.id) {
+            randomUsers.push(user);
+          }
+        });
+      });
+      return { ...state, user: { ...state.user, randomUsers: randomUsers } };
 
     default:
       return state;

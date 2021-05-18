@@ -4,6 +4,7 @@ import {
   GET_USER,
   SET_USER_LOGIN,
   SET_SUBSCRIBED_USERS,
+  SET_RANDOM_USERS,
 } from "./type";
 
 export const getRequest = () => {
@@ -24,4 +25,8 @@ export const setUserLogin = (token) => {
 
 export const setSubscribedUsers = (data) => {
   return { type: SET_SUBSCRIBED_USERS, payload: data };
+};
+
+export const setRandomUsers = (data) => {
+  return { type: SET_RANDOM_USERS, payload: data };
 };
