@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
+import { toggleSubscribe } from "../../@redux/users/operation";
+import { useDispatch } from "react-redux";
 
 const Button = ({
   children,
@@ -11,10 +13,14 @@ const Button = ({
   subscribePersonal,
   auth,
   regist,
+  subscribeUserID,
   ...attrs
 }) => {
+  const dispatch = useDispatch();
+
   const toggleStatus = (e) => {
     e.stopPropagation();
+    dispatch(toggleSubscribe(subscribeUserID));
     e.target.classList.contains(styles["btnSignIn"])
       ? (e.target.textContent = "Підписатися")
       : (e.target.textContent = "Відписатися");
@@ -44,11 +50,15 @@ const Button = ({
     );
   else if (auth)
     return (
-        <button className={styles.auth} onClick={onClick}>Увійти</button>
+      <button className={styles.auth} onClick={onClick}>
+        Увійти
+      </button>
     );
   else if (regist)
     return (
-        <button className={styles.regist} onClick={onClick}>Зареєструватися</button>
+      <button className={styles.regist} onClick={onClick}>
+        Зареєструватися
+      </button>
     );
 
   return (

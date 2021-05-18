@@ -35,7 +35,12 @@ const OtherUsers = ({ title, users, recommendation }) => {
                   />
                 </div>
                 <span className={style.nickname}>{user.nick}</span>
-                <span> {recommendation && <Button subscribe />}</span>
+                <span>
+                  {" "}
+                  {recommendation && (
+                    <Button subscribe subscribeUserID={user.userId} />
+                  )}
+                </span>
               </li>
             );
           })
