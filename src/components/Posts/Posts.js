@@ -13,7 +13,7 @@ const Posts = ({ posts }) => {
         </div>
         <MenuButton blue className={styles.menuSmallScreen} />
 
-        {posts &&
+        {posts && posts.length > 0 ? (
           posts.map((post) => {
             return (
               <PostItem
@@ -26,7 +26,10 @@ const Posts = ({ posts }) => {
                 nickname={post.nickname}
               />
             );
-          })}
+          })
+        ) : (
+          <h3>No posts yet! Add one, or subscribe to another user!</h3>
+        )}
       </section>
     </>
   );

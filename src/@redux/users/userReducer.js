@@ -42,8 +42,7 @@ const userReducer = (state = initialState, action) => {
     case SET_RANDOM_USERS:
       const randomUsers = action.payload.filter((user) => {
         return !state.user.subscribed.some((sub) => {
-          // todo and not my user id
-          return sub.id === user.id;
+          return sub.id === user.id || state.user.mainUser.userId === user.id;
         });
       });
       return { ...state, user: { ...state.user, randomUsers: randomUsers } };

@@ -20,7 +20,8 @@ const Profile = () => {
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.userReducer.user.data);
-  const { nick, avatar } = user;
+  console.log("user", user);
+  const { nick, avatar, userId } = user;
 
   const [modalActive, setModalActive] = useState(false);
   const [showImg, setShowImg] = useState();
@@ -60,7 +61,7 @@ const Profile = () => {
 
   return (
     <div className={styles.container}>
-      <User nick={nick} avatar={avatar} />
+      <User nick={nick} avatar={avatar} userId={userId} />
       <BrokenLine />
       {loading ? (
         <Loading loading={loading} />
