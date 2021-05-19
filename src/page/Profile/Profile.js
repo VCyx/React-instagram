@@ -14,13 +14,13 @@ import { getUserPage } from "../../@redux/users/operation";
 import BrokenLine from "../../components/BrokenLine/BrokenLine";
 import User from "../../components/User/User";
 import Input from "../../components/Input/Input";
+import Userpostcomment from "../../components/UserPostComment/Userpostcomment";
 
 const Profile = () => {
   const paramsUrl = useParams();
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.userReducer.user.data);
-  console.log("user", user);
   const { nick, avatar, userId } = user;
 
   const [modalActive, setModalActive] = useState(false);
@@ -119,22 +119,9 @@ const Profile = () => {
             <hr className="modal-msg-hr" />
           </div>
           <div className="modal-msg-posts">
-            {modalActive &&
-              comment.map((comment) => {
-                return (
-                  <div className={style.commentContainer}>
-                    <div className={style.commentUserBlockInfo}>
-                      <img
-                        className={style.avatar}
-                        src={avaURL + avatar}
-                        alt="avatar"
-                      />
-                      <p>{nick}</p>
-                    </div>
-                    <p className={style.commentUser}>{comment.comment}</p>
-                  </div>
-                );
-              })}
+
+            {modalActive && <Userpostcomment comments={comment} />}
+
           </div>
           <div className="modal-msg-like">
             <Icon type="like" color="#ABB2C1" className={styles.iconComment} />
