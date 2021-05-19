@@ -31,12 +31,12 @@ export const toggleLikePost = (postID) => {
     });
 };
 
-export const addComment = ({ postID, comment, token }) => (dispatch) => {
+export const addComment = ({ postID, comment }) => (dispatch) => {
   axios
     .post(
       ADD_COMMENT + postID,
       { comment: comment },
-      { headers: { Authorization: `Bearer ${token}` } }
+      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     )
     .then((res) => {
       console.log("comment added", res.data);

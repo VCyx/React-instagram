@@ -21,9 +21,9 @@ const PostItem = ({ id, name, picture, likes, comments, nickname }) => {
     console.log("Like!");
   };
 
-  const onSubmit = (comment) => {
-    dispatch(addComment({ postID: id, comment: comment, token: token }));
-  };
+  // const onSubmit = (comment) => {
+  //   dispatch(addComment({ postID: id, comment: comment }));
+  // };
 
   return (
     <div className={styles.container}>
@@ -50,7 +50,7 @@ const PostItem = ({ id, name, picture, likes, comments, nickname }) => {
         />
       </div>
       <Comments comments={comments} />
-      <Input comment onSubmit={onSubmit} />
+      <Input comment postId={id} />
     </div>
   );
 };
