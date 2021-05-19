@@ -1,5 +1,6 @@
 import axios from "axios";
 import { addPostComment, getPostsAll } from "./actions";
+import { saveLocalComment } from "../users/action";
 
 const URL_GET_POSTS = `http://176.105.100.114:7000/api/post`;
 const TOGGLE_LIKE = `http://176.105.100.114:7000/api/post/like/`;
@@ -40,6 +41,7 @@ export const addComment = ({ postID, comment }) => (dispatch) => {
     )
     .then((res) => {
       console.log("comment added", res.data);
+      dispatch(saveLocalComment(res.data));
       dispatch(addPostComment(postID, res.data));
     })
     .catch((er) => {
