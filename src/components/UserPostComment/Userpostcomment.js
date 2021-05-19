@@ -2,14 +2,13 @@ import React from 'react';
 import style from "../Modal/Modal.module.scss";
 import {avaURL} from "../../api/AxiosAPI";
 
-
 const Userpostcomment = ({comments}) => {
 
   return (
       <div>
-        { comments.map((comment)=>{
+        { comments.map((comment, i)=>{
           return (
-            <div className={style.commentContainer}>
+            <div key={i} className={style.commentContainer}>
               <div className={style.commentUserBlockInfo}>
                 <img className={style.avatar} src={avaURL + comment.nickname.avatar} alt="avatar"/>
                 <p>{comment.nickname.nick}</p>

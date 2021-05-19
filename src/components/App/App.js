@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     dispatch(getUsers());
     dispatch(getUsersSubscribed());
-  }, []);
+  }, [dispatch]);
   return (
     <div className="App">
       <Routes />

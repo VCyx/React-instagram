@@ -119,9 +119,7 @@ const Profile = () => {
             <hr className="modal-msg-hr" />
           </div>
           <div className="modal-msg-posts">
-
             {modalActive && <Userpostcomment comments={comment} />}
-
           </div>
           <div className="modal-msg-like">
             <Icon type="like" color="#ABB2C1" className={styles.iconComment} />
@@ -134,7 +132,7 @@ const Profile = () => {
             <span className={styles.iconCommentCountModal}>{showComments}</span>
           </div>
           <div className="modal-msg-comments">
-            <Input comment modalInput />
+            <Input comment modalInput onSubmit/>
           </div>
         </div>
       </Modal>
