@@ -1,27 +1,26 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Profile.module.scss";
-import style from '../../components/Modal/Modal.module.scss'
+import style from "../../components/Modal/Modal.module.scss";
 import Icon from "../../components/Icon/Icon";
-import {withRouter} from "react-router";
-import {GetPosts} from "../../api/InfinityScroll/GetPosts";
+import { withRouter } from "react-router";
+import { GetPosts } from "../../api/InfinityScroll/GetPosts";
 import Loading from "../../components/Loading/Loading";
-import {avaURL, mainURL} from "../../api/AxiosAPI";
+import { avaURL, mainURL } from "../../api/AxiosAPI";
 import PropTypes from "prop-types";
 import Modal from "../../components/Modal/Modal";
-import {useDispatch, useSelector} from "react-redux";
-import {useParams} from 'react-router-dom'
-import {getUserPage} from "../../@redux/users/operation";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { getUserPage } from "../../@redux/users/operation";
 import BrokenLine from "../../components/BrokenLine/BrokenLine";
 import User from "../../components/User/User";
 import Input from "../../components/Input/Input";
 
 const Profile = () => {
-
   const paramsUrl = useParams();
   const dispatch = useDispatch();
 
-  const user = useSelector(store => store.userReducer.user.data);
-  const {nick, avatar} = user;
+  const user = useSelector((store) => store.userReducer.user.data);
+  const { nick, avatar } = user;
 
   const [modalActive, setModalActive] = useState(false);
   const [showImg, setShowImg] = useState();
@@ -34,14 +33,17 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
 
   window.onscroll = () => {
-    if (document.documentElement.scrollHeight === document.documentElement.scrollTop + document.documentElement.clientHeight) {
+    if (
+      document.documentElement.scrollHeight ===
+      document.documentElement.scrollTop + document.documentElement.clientHeight
+    ) {
       setPage((prev) => prev + 1);
     }
   };
 
-  useEffect(()=>{
-    dispatch(getUserPage(paramsUrl.name))
-  },[dispatch, paramsUrl.name]);
+  useEffect(() => {
+    dispatch(getUserPage(paramsUrl.name));
+  }, [dispatch, paramsUrl.name]);
 
   useEffect(() => {
     setLoading(true);
@@ -51,77 +53,97 @@ const Profile = () => {
     const loadPage = async () => {
       const newPost = await GetPosts(page, 2, paramsUrl.name);
       setPosts((prev) => [...prev, ...newPost]);
-      setLoading(false)
+      setLoading(false);
     };
     loadPage();
-  }, [page,paramsUrl.name]);
+  }, [page, paramsUrl.name]);
 
   return (
     <div className={styles.container}>
-      <User nick={nick} avatar={avatar}/>
-       <BrokenLine/>
-      {loading ?
-        (<Loading loading={loading}/>) :
-        (<div className={styles.galleryPosts}>
+      <User nick={nick} avatar={avatar} />
+      <BrokenLine />
+      {loading ? (
+        <Loading loading={loading} />
+      ) : (
+        <div className={styles.galleryPosts}>
           {posts &&
-             posts.map((post, index) => (
-            <div key={index} className={styles.galleryHover} onClick={() => {
-                setModalActive(true);
-                setShowImg(post.img);
-                setShowLike(post.like);
-                setShowComments(Object.keys(post.commentaries).length);
-                setComment(post.commentaries);
-              }}>
-              <div className={styles.imageHover}>
-                <Icon type="like" color="white"/>
-                <span className={styles.iconCommentCount}>{post.like}</span>
-                <Icon className={styles.iconComment} type="comment" color="white"/>
-                <span className={styles.iconCommentCount}>{Object.keys(post.commentaries).length }</span>{" "}
+            posts.map((post) => (
+              <div
+                key={post.id}
+                className={styles.galleryHover}
+                onClick={() => {
+                  setModalActive(true);
+                  setShowImg(post.img);
+                  setShowLike(post.like);
+                  setShowComments(Object.keys(post.commentaries).length);
+                  setComment(post.commentaries);
+                }}
+              >
+                <div className={styles.imageHover}>
+                  <Icon type="like" color="white" />
+                  <span className={styles.iconCommentCount}>{post.like}</span>
+                  <Icon
+                    className={styles.iconComment}
+                    type="comment"
+                    color="white"
+                  />
+                  <span className={styles.iconCommentCount}>
+                    {Object.keys(post.commentaries).length}
+                  </span>{" "}
+                </div>
+                <img
+                  className={styles.galleryImage}
+                  src={mainURL + post.img}
+                  alt="logo"
+                />
               </div>
-              <img className={styles.galleryImage} src={mainURL + post.img} alt="logo"/>
-            </div>
-          ))}
+            ))}
         </div>
       )}
 
       <Modal activeModal={modalActive} setActiveModal={setModalActive}>
         <div className="modal-picture">
-          <img className={styles.galleryImageBox} src={!!showImg ? mainURL + showImg : ""} alt="logo"/>
+          <img
+            className={styles.galleryImageBox}
+            src={!!showImg ? mainURL + showImg : ""}
+            alt="logo"
+          />
         </div>
         <div className="modal-msg">
           <div className="modal-msg-user">
             <div className="modal-msg-user-box">
-              <img className={style.avatar} src={avaURL + avatar} alt="logo"/>
+              <img className={style.avatar} src={avaURL + avatar} alt="logo" />
               <div className="modal-msg-user-nick">{nick}</div>
             </div>
-            <hr className="modal-msg-hr"/>
+            <hr className="modal-msg-hr" />
           </div>
           <div className="modal-msg-posts">
-
-            {modalActive &&  comment.map((comment)=>{
-             return (
-               <div className={style.commentContainer}>
-                <div className={style.commentUserBlockInfo}>
-                  <img className={style.avatar} src={avaURL + avatar} alt="avatar"/>
-                  <p>{nick}</p>
-                </div>
-                 <p className={style.commentUser}>{comment.comment}</p>
-               </div>
-             )
-            })}
-
+            {modalActive &&
+              comment.map((comment) => {
+                return (
+                  <div className={style.commentContainer}>
+                    <div className={style.commentUserBlockInfo}>
+                      <img
+                        className={style.avatar}
+                        src={avaURL + avatar}
+                        alt="avatar"
+                      />
+                      <p>{nick}</p>
+                    </div>
+                    <p className={style.commentUser}>{comment.comment}</p>
+                  </div>
+                );
+              })}
           </div>
           <div className="modal-msg-like">
-            <Icon type="like" color="#ABB2C1" className={styles.iconComment}/>
+            <Icon type="like" color="#ABB2C1" className={styles.iconComment} />
             <span className={styles.iconCommentCountModal}>{showLike}</span>
             <Icon
               className={styles.iconComment}
               type="comment"
               color="#ABB2C1"
             />
-            <span className={styles.iconCommentCountModal}>
-              {showComments}
-            </span>
+            <span className={styles.iconCommentCountModal}>{showComments}</span>
           </div>
           <div className="modal-msg-comments">
             <Input comment modalInput />

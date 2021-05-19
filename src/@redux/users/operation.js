@@ -19,7 +19,6 @@ const GET_MAIN_USER = `http://176.105.100.114:7000/api/user/owner`;
 export const getUsers = () => (dispatch) => {
   dispatch(getRequest());
   axios(URL_GET_USERS).then((res) => {
-    console.log("get user", res.data.rows);
     dispatch(getUsersSuccess(res.data.rows));
   });
 };

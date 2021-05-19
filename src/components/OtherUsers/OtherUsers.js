@@ -7,8 +7,8 @@ import Button from "../Button/Button";
 const OtherUsers = ({ title, users, recommendation }) => {
   const history = useHistory();
 
-  const checkUser = (id) => {
-    history.push(`/user/${id}`);
+  const checkUser = (userId) => {
+    history.push(`/user/${userId}`);
   };
 
   return (
@@ -22,7 +22,7 @@ const OtherUsers = ({ title, users, recommendation }) => {
           users.map((user) => {
             return (
               <li
-                onClick={() => checkUser(user.id)}
+                onClick={() => checkUser(user.userId)}
                 className={style.usersItem}
                 key={user.userId}
               >

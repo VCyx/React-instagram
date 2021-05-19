@@ -19,6 +19,7 @@ const initialState = {
     data: {},
     subscribed: [],
     randomUsers: [],
+    mainUser: {},
   },
 };
 
@@ -47,7 +48,7 @@ const userReducer = (state = initialState, action) => {
       });
       return { ...state, user: { ...state.user, randomUsers: randomUsers } };
     case SET_USER_DATA:
-      return { ...state, user: { ...state.user, data: action.payload } };
+      return { ...state, user: { ...state.user, mainUser: action.payload } };
 
     default:
       return state;
