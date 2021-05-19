@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, useLocation, useHistory } from "react-router-dom";
+import { NavLink, useHistory, useLocation } from "react-router-dom";
 import {
   LOGIN_ROUTE,
   MAIN_ROUTE,
@@ -13,7 +13,6 @@ import styles from "./Login.module.scss";
 import Icon from "../../components/Icon/Icon";
 import { login, registration } from "../../api/verificationAPI";
 import { observer } from "mobx-react";
-import Routes from "../../routes/Routes";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserLogin } from "../../@redux/users/action";
 
@@ -36,13 +35,12 @@ const Login = observer(() => {
       if (isLogin) {
         auUser = await login(email, password);
         dispatch(setUserLogin(auUser));
-
       } else {
         auUser = await registration(email, password, nickname);
         dispatch(setUserLogin(auUser));
         history.push(LOGIN_ROUTE);
       }
-       auUser = !!autUserq
+      auUser = !!autUserq;
       history.push(MAIN_ROUTE);
     } catch (e) {
       alert(e.response.data.message);

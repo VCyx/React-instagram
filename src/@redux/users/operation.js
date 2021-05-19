@@ -30,9 +30,23 @@ export const getUserPage = (userId) => (dispatch) => {
 export const getUsersSubscribed = () => (dispatch) => {
   axios(URL_GET_SUBSCRIPTION_USERS, {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  }).then((res) => {
-    dispatch(setSubscribedUsers(res.data));
-  });
+  })
+    .then((res) => {
+      dispatch(setSubscribedUsers(res.data));
+    })
+    .then(() => {
+      dispatch(getRandomUsers());
+    });
+};
+
+export const getRandomUsers = () => (dispatch) => {
+  axios
+    .get(URL_RANDOM_USERS, {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    })
+    .then((res) => {
+      dispatch(setRandomUsers(res.data));
+    });
 };
 
 export const toggleSubscribe = (userID) => (dispatch) => {
@@ -46,15 +60,5 @@ export const toggleSubscribe = (userID) => (dispatch) => {
     )
     .then((res) => {
       dispatch(getUsersSubscribed());
-    });
-};
-
-export const getRandomUsers = () => (dispatch) => {
-  axios
-    .get(URL_RANDOM_USERS, {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    })
-    .then((res) => {
-      dispatch(setRandomUsers(res.data));
     });
 };
