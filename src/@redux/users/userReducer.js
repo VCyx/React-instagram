@@ -38,14 +38,10 @@ const userReducer = (state = initialState, action) => {
       });
       return { ...state, user: { ...state.user, subscribed: newData } };
     case SET_RANDOM_USERS:
-      const randomUsers = [];
-
-      action.payload.map((user) => {
-        state.user.subscribed.map((sub) => {
+      const randomUsers = action.payload.filter((user) => {
+        return !state.user.subscribed.some((sub) => {
           // todo and not my user id
-          if (sub.id !== user.id) {
-            randomUsers.push(user);
-          }
+          return sub.id === user.id;
         });
       });
       return { ...state, user: { ...state.user, randomUsers: randomUsers } };
