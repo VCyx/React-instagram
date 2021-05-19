@@ -5,13 +5,14 @@ import {
   SET_USER_LOGIN,
   SET_SUBSCRIBED_USERS,
   SET_RANDOM_USERS,
+  SET_USER_DATA,
 } from "./type";
 
 export const getRequest = () => {
   return { type: LOAD_USER_REQUEST, payload: true };
 };
 
-export const getUserSuccess = (data) => {
+export const getUsersSuccess = (data) => {
   return { type: LOAD_USER_SUCCESS, payload: data };
 };
 
@@ -29,4 +30,8 @@ export const setSubscribedUsers = (data) => {
 
 export const setRandomUsers = (data) => {
   return { type: SET_RANDOM_USERS, payload: data };
+};
+
+export const setUserData = (data) => {
+  return { type: SET_USER_DATA, payload: data };
 };

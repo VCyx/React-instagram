@@ -1,14 +1,18 @@
 
 .userContainer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   align-items: center;
 
-  margin: 0 auto 35px;
+  margin: 0 15px 35px;
 }
 
 .userAvatar {
+  width: 47px;
+  height: 47px;
+  object-fit: cover;
   border-radius: 50px;
+  margin-right: 30px;
 }
 
 .userName {

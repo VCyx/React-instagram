@@ -4,3 +4,4 @@ export const GET_USER = "GET_USER";
 export const SET_USER_LOGIN = "SET_USER_LOGIN";
 export const SET_SUBSCRIBED_USERS = "SET_SUBSCRIBED_USERS";
 export const SET_RANDOM_USERS = "SET_RANDOM_USERS";
+export const SET_USER_DATA = "SET_USER_DATA";

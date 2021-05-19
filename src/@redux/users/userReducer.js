@@ -5,6 +5,7 @@ import {
   SET_USER_LOGIN,
   SET_SUBSCRIBED_USERS,
   SET_RANDOM_USERS,
+  SET_USER_DATA,
 } from "./type";
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
     data: {},
     subscribed: [],
     randomUsers: [],
+    mainUser: {},
   },
 };
 
@@ -28,7 +30,7 @@ const userReducer = (state = initialState, action) => {
     case LOAD_USER_SUCCESS:
       return { ...state, users: { ...state.users, data: action.payload } };
     case GET_USER:
-      return { ...state, user: { data: action.payload } };
+      return { ...state, user: { ...state.user, data: action.payload } };
     case SET_USER_LOGIN: {
       return { ...state, users: { ...state.users, isAuth: action.payload } };
     }
@@ -38,17 +40,14 @@ const userReducer = (state = initialState, action) => {
       });
       return { ...state, user: { ...state.user, subscribed: newData } };
     case SET_RANDOM_USERS:
-      const randomUsers = [];
-
-      action.payload.map((user) => {
-        state.user.subscribed.map((sub) => {
-          // todo and not my user id
-          if (sub.id !== user.id) {
-            randomUsers.push(user);
-          }
+      const randomUsers = action.payload.filter((user) => {
+        return !state.user.subscribed.some((sub) => {
+          return sub.id === user.id || state.user.mainUser.userId === user.id;
         });
       });
       return { ...state, user: { ...state.user, randomUsers: randomUsers } };
+    case SET_USER_DATA:
+      return { ...state, user: { ...state.user, mainUser: action.payload } };
 
     default:
       return state;
