@@ -14,6 +14,7 @@ import {getUserPage} from "../../@redux/users/operation";
 import BrokenLine from "../../components/BrokenLine/BrokenLine";
 import User from "../../components/User/User";
 import Input from "../../components/Input/Input";
+import Userpostcomment from "../../components/UserPostComment/Userpostcomment";
 
 const Profile = () => {
 
@@ -56,7 +57,7 @@ const Profile = () => {
     loadPage();
   }, [page,paramsUrl.name]);
 
-  console.log("posts", posts)
+  console.log("TEST", comment)
   return (
     <div className={styles.container}>
       <User nick={nick} avatar={avatar}/>
@@ -99,18 +100,7 @@ const Profile = () => {
           </div>
           <div className="modal-msg-posts">
 
-            {modalActive &&
-             comment.map((comment)=>{
-              return (
-                <div className={style.commentContainer}>
-                 <div className={style.commentUserBlockInfo}>
-                   <img className={style.avatar} src={avaURL + avatar} alt="avatar"/>
-                  </div>
-                  <p className={style.commentUser}>{comment.comment}</p>
-                </div>
-              )
-             })
-            }
+            {modalActive && <Userpostcomment comments={comment} />}
 
           </div>
           <div className="modal-msg-like">
