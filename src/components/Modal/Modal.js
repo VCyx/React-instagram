@@ -1,4 +1,4 @@
-import style from './Style.scss'
+import Style from './Style.scss'
 import React  from 'react';
 
 

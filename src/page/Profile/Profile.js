@@ -28,6 +28,7 @@ const Profile = () => {
   const [showLike, setShowLike] = useState();
   const [showComments, setShowComments] = useState();
   const [comment, setComment] = useState();
+  const [idPost, setIdPost] = useState();
 
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
@@ -59,6 +60,8 @@ const Profile = () => {
     loadPage();
   }, [page, paramsUrl.name]);
 
+
+  console.log(comment)
   return (
     <div className={styles.container}>
       <User nick={nick} avatar={avatar} userId={userId} />
@@ -78,6 +81,7 @@ const Profile = () => {
                   setShowLike(post.like);
                   setShowComments(Object.keys(post.commentaries).length);
                   setComment(post.commentaries);
+                  setIdPost(post.id);
                 }}
               >
                 <div className={styles.imageHover}>
@@ -132,7 +136,7 @@ const Profile = () => {
             <span className={styles.iconCommentCountModal}>{showComments}</span>
           </div>
           <div className="modal-msg-comments">
-            <Input comment modalInput onSubmit/>
+            <Input comment modalInput onSubmit postId={idPost}/>
           </div>
         </div>
       </Modal>
