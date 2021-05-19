@@ -6,6 +6,7 @@ import {
   SET_SUBSCRIBED_USERS,
   SET_RANDOM_USERS,
   SET_USER_DATA,
+  SAVE_COMMENT,
 } from "./type";
 
 const initialState = {
@@ -17,6 +18,7 @@ const initialState = {
   },
   user: {
     data: {},
+    сomments: [],
     subscribed: [],
     randomUsers: [],
     mainUser: {},
@@ -48,6 +50,8 @@ const userReducer = (state = initialState, action) => {
       return { ...state, user: { ...state.user, randomUsers: randomUsers } };
     case SET_USER_DATA:
       return { ...state, user: { ...state.user, mainUser: action.payload } };
+    case SAVE_COMMENT:
+      return { ...state, user: { ...state.user, comments: action.payload } };
 
     default:
       return state;
