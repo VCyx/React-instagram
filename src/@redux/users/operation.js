@@ -34,7 +34,6 @@ export const getUsersSubscribed = () => (dispatch) => {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
   })
     .then((res) => {
-      console.log("userID?", res.data);
       dispatch(setSubscribedUsers(res.data));
     })
     .then(() => {
@@ -72,7 +71,6 @@ export const getUserData = () => (dispatch) => {
       headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
     })
     .then((res) => {
-      console.log("userMain", res.data);
       dispatch(setUserData(res.data));
     });
 };

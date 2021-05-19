@@ -20,9 +20,15 @@ export const getPostsMain = async (page, limit = 3) => {
 };
 
 export const toggleLikePost = (postID) => {
-  axios.put(TOGGLE_LIKE + postID, {}).then((res) => {
-    console.log(res);
-  });
+  axios
+    .put(
+      TOGGLE_LIKE + postID,
+      {},
+      { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
+    )
+    .then((res) => {
+      console.log(res.data);
+    });
 };
 
 export const addComment = ({ postID, comment, token }) => (dispatch) => {
