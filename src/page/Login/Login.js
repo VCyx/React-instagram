@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useEffect, useState} from "react";
 import { NavLink, useLocation, useHistory } from "react-router-dom";
 import {
   LOGIN_ROUTE,
@@ -11,7 +11,7 @@ import style from "../../components/Input/Input.module.scss";
 import "../Login/Login.module.scss";
 import styles from "./Login.module.scss";
 import Icon from "../../components/Icon/Icon";
-import { login, registration } from "../../api/verificationAPI";
+import {check, login, registration} from "../../api/verificationAPI";
 import { observer } from "mobx-react";
 import Routes from "../../routes/Routes";
 import { useDispatch, useSelector } from "react-redux";
@@ -30,6 +30,9 @@ const Login = observer(() => {
   Вот твое решение:
    */
   const autUserq = useSelector((state) => state.userReducer.users.isAuth);
+
+
+
   const ecTrance = async () => {
     try {
       let auUser;
@@ -42,8 +45,12 @@ const Login = observer(() => {
         dispatch(setUserLogin(auUser));
         history.push(LOGIN_ROUTE);
       }
-       auUser = !!autUserq
+
+
+      auUser = !!autUserq
       history.push(MAIN_ROUTE);
+
+
     } catch (e) {
       alert(e.response.data.message);
     }
