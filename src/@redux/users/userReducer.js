@@ -5,6 +5,7 @@ import {
   SET_USER_LOGIN,
   SET_SUBSCRIBED_USERS,
   SET_RANDOM_USERS,
+  SET_USER_DATA,
 } from "./type";
 
 const initialState = {
@@ -45,6 +46,8 @@ const userReducer = (state = initialState, action) => {
         });
       });
       return { ...state, user: { ...state.user, randomUsers: randomUsers } };
+    case SET_USER_DATA:
+      return { ...state, user: { ...state.user, data: action.payload } };
 
     default:
       return state;

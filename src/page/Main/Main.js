@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import MainAside from "../../components/MainAside/MainAside";
 import { getPostsMain } from "../../@redux/posts/operations";
 import { getPostsAll } from "../../@redux/posts/actions";
+import { getUserData } from "../../@redux/users/operation";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -30,6 +31,7 @@ const Main = () => {
 
   useEffect(() => {
     loadPage();
+    dispatch(getUserData());
   }, [page]);
 
   if (loading) {
