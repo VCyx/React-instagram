@@ -12,11 +12,10 @@ import "../Login/Login.module.scss";
 import styles from "./Login.module.scss";
 import Icon from "../../components/Icon/Icon";
 import { login, registration } from "../../api/verificationAPI";
-import { observer } from "mobx-react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setUserLogin } from "../../@redux/users/action";
 
-const Login = observer(() => {
+const Login = () => {
   const positionLink = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
@@ -25,10 +24,6 @@ const Login = observer(() => {
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
 
-  /*
-  Вот твое решение:
-   */
-  const autUserq = useSelector((state) => state.userReducer.users.isAuth);
   const ecTrance = async () => {
     try {
       let auUser;
@@ -40,7 +35,6 @@ const Login = observer(() => {
         dispatch(setUserLogin(auUser));
         history.push(LOGIN_ROUTE);
       }
-      auUser = !!autUserq;
       history.push(MAIN_ROUTE);
     } catch (e) {
       alert(e.response.data.message);
@@ -120,6 +114,6 @@ const Login = observer(() => {
       </div>
     </div>
   );
-});
+};
 
 export default Login;
