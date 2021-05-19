@@ -16,16 +16,17 @@ const Button = ({
   subscribeUserID,
   ...attrs
 }) => {
+
   const dispatch = useDispatch();
+  let activeSubscribe = false;
 
   const toggleStatus = (e) => {
     e.stopPropagation();
-    dispatch(toggleSubscribe(subscribeUserID));
-    e.target.classList.contains(styles["btnSignIn"])
-      ? (e.target.textContent = "Підписатися")
-      : (e.target.textContent = "Відписатися");
-    e.target.classList.toggle(styles["btnSignIn"]);
+     dispatch(toggleSubscribe(subscribeUserID));
+   e.target.classList.toggle(styles["btnSignIn"]);
+    (activeSubscribe) ? (e.target.textContent = "Відписатися") : (e.target.textContent = "Підписатися");
   };
+
 
   if (showMore)
     return (

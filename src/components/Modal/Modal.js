@@ -1,10 +1,8 @@
-import Style from './Style.scss'
-import React, {useState} from 'react';
+import style from './Style.scss'
+import React  from 'react';
 
 
 const Modal = ({activeModal, setActiveModal, children}) => {
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [cardId, setCardId] = useState(null)
 
     return (
         <div className={activeModal ? 'cont-modal active' : 'cont-modal'} onClick={()=>setActiveModal(false)}>
