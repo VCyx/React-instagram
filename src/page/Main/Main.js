@@ -6,6 +6,7 @@ import MainAside from "../../components/MainAside/MainAside";
 import { getPostsMain } from "../../@redux/posts/operations";
 import { clearPosts, getPostsAll } from "../../@redux/posts/actions";
 import { getUserData } from "../../@redux/users/operation";
+import Loading from "../../components/Loading/Loading";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const Main = () => {
   }, [page]);
 
   if (loading) {
-    return <h3>Loading...</h3>;
+    return <Loading loading={loading} />;
   }
 
   return (

@@ -13,6 +13,7 @@ const initialState = {
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_MAIN_POSTS:
+      console.log("posts payload", action.payload);
       return {
         ...state,
         posts: state.posts.concat(action.payload),

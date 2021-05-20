@@ -7,6 +7,8 @@ import {
   setRandomUsers,
   setUserData,
 } from "./action";
+import { getPostsMain } from "../posts/operations";
+import { clearPosts, getPostsAll } from "../posts/actions";
 
 const GET_USER_PAGE = `http://176.105.100.114:7000/api/user/ `;
 const URL_GET_USERS = `http://176.105.100.114:7000/api/user/all`;
@@ -58,8 +60,11 @@ export const toggleSubscribe = (userID) => (dispatch) => {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       }
     )
-    .then((res) => {
+    .then(async (res) => {
       dispatch(getUsersSubscribedOnce());
+      dispatch(clearPosts());
+      const newPost = await getPostsMain(1, 3);
+      dispatch(getPostsAll(newPost));
     });
 };
 
