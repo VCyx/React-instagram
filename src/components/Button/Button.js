@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import styles from "./Button.module.scss";
 import { toggleSubscribe } from "../../@redux/users/operation";
 import { useDispatch } from "react-redux";
+import classNames from "classnames";
 
 const Button = ({
   children,
@@ -16,6 +17,7 @@ const Button = ({
   subscribeUserID,
   ...attrs
 }) => {
+
   const dispatch = useDispatch();
   let activeSubscribe = true;
 
@@ -27,6 +29,7 @@ const Button = ({
       ? (e.target.textContent = "Відписатися")
       : (e.target.textContent = "Підписатися");
   };
+
 
   if (showMore)
     return (
@@ -42,12 +45,10 @@ const Button = ({
     );
   else if (subscribePersonal)
     return (
-      <button
-        onClick={(e) => toggleStatus(e)}
-        className={styles.subscribePersonal}
-      >
-        Підписатися
-      </button>
+      <>
+        {activeSubscribe ? (<button onClick={(e) => toggleStatus(e)} className={classNames(styles.subscribePersonal,styles.btnSignIn)}>Відписатися</button>)
+          :(<button onClick={(e) => toggleStatus(e)} className={classNames(styles.subscribePersonal)}>Підписатися</button>) }
+      </>
     );
   else if (auth)
     return (
