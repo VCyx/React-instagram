@@ -9,11 +9,9 @@ import { getUserData } from "../../@redux/users/operation";
 
 const Main = () => {
   const dispatch = useDispatch();
-
   const [page, setPage] = useState(1);
   const loading = useSelector((state) => state.postsReducer.isLoading);
   const posts = useSelector((state) => state.postsReducer.posts);
-  // console.log("posts", posts);
 
   window.onscroll = () => {
     if (

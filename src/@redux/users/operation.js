@@ -2,7 +2,6 @@ import axios from "axios";
 
 import {
   getUsersSuccess,
-  getRequest,
   getOneUser,
   setSubscribedUsers,
   setRandomUsers,
@@ -17,7 +16,6 @@ const URL_RANDOM_USERS = `http://176.105.100.114:7000/api/subscription/randsigne
 const GET_MAIN_USER = `http://176.105.100.114:7000/api/user/owner`;
 
 export const getUsers = () => (dispatch) => {
-  dispatch(getRequest());
   axios(URL_GET_USERS).then((res) => {
     dispatch(getUsersSuccess(res.data.rows));
   });

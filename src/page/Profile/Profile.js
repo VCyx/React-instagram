@@ -37,7 +37,6 @@ const Profile = () => {
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
 
-  console.log("posts", posts);
   const [loading, setLoading] = useState(false);
 
   window.onscroll = () => {

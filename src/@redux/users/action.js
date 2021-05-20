@@ -1,5 +1,4 @@
 import {
-  LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   GET_USER,
   SET_USER_LOGIN,
@@ -8,10 +7,6 @@ import {
   SET_USER_DATA,
   SAVE_COMMENT,
 } from "./type";
-
-export const getRequest = () => {
-  return { type: LOAD_USER_REQUEST, payload: true };
-};
 
 export const getUsersSuccess = (data) => {
   return { type: LOAD_USER_SUCCESS, payload: data };

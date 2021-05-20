@@ -3,7 +3,6 @@ import styles from "./Comments.module.scss";
 import Button from "../Button/Button";
 
 const Comments = ({ comments }) => {
-  // console.log("comments", comments);
 
   const [showMoreComments, setShowMoreComments] = useState(false);
   const [showMoreButton, setShowMoreButton] = useState(true);
