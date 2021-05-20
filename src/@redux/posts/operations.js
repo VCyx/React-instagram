@@ -29,7 +29,6 @@ export const toggleLikePost = (postID) => (dispatch) => {
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     )
     .then((res) => {
-      // console.log("res like", res.data);
       dispatch(updatePostLikes(postID, res.data));
     });
 };
@@ -42,7 +41,6 @@ export const addComment = ({ postID, comment }) => (dispatch) => {
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     )
     .then((res) => {
-      console.log("comment added", res.data);
       dispatch(saveLocalComment(res.data)); // todo under question
       dispatch(addPostComment(postID, res.data));
     })

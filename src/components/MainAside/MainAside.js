@@ -12,7 +12,6 @@ const MainAside = () => {
   const randomUsers = useSelector(
     (state) => state.userReducer.user.randomUsers
   );
-  console.log(userSubscribedUsers )
   return (
     <>
       <div className={styles.menuButtonContainer}>
