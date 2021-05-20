@@ -29,12 +29,15 @@ const Profile = () => {
   const [modalActive, setModalActive] = useState(false);
   const [showImg, setShowImg] = useState();
   const [showLike, setShowLike] = useState();
+
   const [showComments, setShowComments] = useState();
   const [comment, setComment] = useState();
   const [idPost, setIdPost] = useState();
 
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
+
+  console.log("posts", posts);
   const [loading, setLoading] = useState(false);
 
   window.onscroll = () => {
