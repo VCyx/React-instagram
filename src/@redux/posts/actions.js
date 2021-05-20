@@ -14,6 +14,7 @@ export const addPostComment = (postID, comment) => {
 };
 
 export const updatePostLikes = (postID, data) => {
+  console.log("data", data);
   return { type: UPDATE_POST_LIKES, payload: { postID, data } };
 };
 
