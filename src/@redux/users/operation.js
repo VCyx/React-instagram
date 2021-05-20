@@ -61,8 +61,16 @@ export const toggleSubscribe = (userID) => (dispatch) => {
       }
     )
     .then((res) => {
-      dispatch(getUsersSubscribed());
+      dispatch(getUsersSubscribedOnce());
     });
+};
+
+const getUsersSubscribedOnce = () => (dispatch) => {
+  axios(URL_GET_SUBSCRIPTION_USERS, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  }).then((res) => {
+    dispatch(setSubscribedUsers(res.data));
+  });
 };
 
 export const getUserData = () => (dispatch) => {

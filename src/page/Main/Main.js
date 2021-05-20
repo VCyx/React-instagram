@@ -4,7 +4,7 @@ import Posts from "../../components/Posts/Posts";
 import { useDispatch, useSelector } from "react-redux";
 import MainAside from "../../components/MainAside/MainAside";
 import { getPostsMain } from "../../@redux/posts/operations";
-import { getPostsAll } from "../../@redux/posts/actions";
+import { clearPosts, getPostsAll } from "../../@redux/posts/actions";
 import { getUserData } from "../../@redux/users/operation";
 
 const Main = () => {
@@ -28,6 +28,11 @@ const Main = () => {
     const newPost = await getPostsMain(page, 3);
     dispatch(getPostsAll(newPost));
   };
+
+  // to clear posts
+  useEffect(() => {
+    dispatch(clearPosts());
+  }, []);
 
   useEffect(() => {
     loadPage();

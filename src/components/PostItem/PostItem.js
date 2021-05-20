@@ -6,18 +6,20 @@ import Input from "../Input/Input";
 import { avaURL, mainURL } from "../../api/AxiosAPI";
 import PostHoverLike from "../PostHoverLike/PostHoverLike";
 import { toggleLikePost } from "../../@redux/posts/operations";
+import { useDispatch, useSelector } from "react-redux";
 
 const PostItem = ({ id, name, picture, likes, comments, nickname }) => {
+  const dispatch = useDispatch();
+  const userId = useSelector((state) => state.userReducer.user.mainUser.userId);
+  const isLiked = likes.some((likeId) => likeId.like === userId);
 
   const countObjectKeys = (object) => {
     return Object.keys(object).length;
   };
 
   const toggleLike = (postID) => {
-    toggleLikePost(postID);
-    console.log("Like!");
+    dispatch(toggleLikePost(postID));
   };
-  
 
   return (
     <div className={styles.container}>
@@ -35,7 +37,9 @@ const PostItem = ({ id, name, picture, likes, comments, nickname }) => {
         <IconWithCount
           className={styles.footerIconsItem}
           type="like"
-          count={likes}
+          color="#3772FF"
+          filled={isLiked}
+          count={likes.length}
         />
         <IconWithCount
           className={styles.footerIconsItem}

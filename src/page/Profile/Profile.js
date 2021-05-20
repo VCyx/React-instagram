@@ -14,15 +14,15 @@ import { getUserPage } from "../../@redux/users/operation";
 import BrokenLine from "../../components/BrokenLine/BrokenLine";
 import User from "../../components/User/User";
 import Input from "../../components/Input/Input";
-import Userpostcomment from "../../components/UserPostComment/Userpostcomment";
-import {saveLocalComment} from "../../@redux/users/action";
+import UserPostcomment from "../../components/UserPostComment/Userpostcomment";
+import { saveLocalComment } from "../../@redux/users/action";
 
 const Profile = () => {
   const paramsUrl = useParams();
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.userReducer.user.data);
- // const comments = useSelector((store) => store.userReducer.user.сomments);
+  // const comments = useSelector((store) => store.userReducer.user.сomments);
 
   const { nick, avatar, userId } = user;
 
@@ -36,7 +36,6 @@ const Profile = () => {
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
-
 
   window.onscroll = () => {
     if (
@@ -60,13 +59,10 @@ const Profile = () => {
       const newPost = await GetPosts(page, 2, paramsUrl.name);
       setPosts((prev) => [...prev, ...newPost]);
       setLoading(false);
-
     };
     loadPage();
   }, [page, paramsUrl.name]);
 
-
-  console.log(comment)
   return (
     <div className={styles.container}>
       <User nick={nick} avatar={avatar} userId={userId} />
@@ -128,7 +124,7 @@ const Profile = () => {
             <hr className="modal-msg-hr" />
           </div>
           <div className="modal-msg-posts">
-            {modalActive && <Userpostcomment comments={comment} />}
+            {modalActive && <UserPostcomment comments={comment} />}
           </div>
           <div className="modal-msg-like">
             <Icon type="like" color="#ABB2C1" className={styles.iconComment} />
@@ -141,7 +137,7 @@ const Profile = () => {
             <span className={styles.iconCommentCountModal}>{showComments}</span>
           </div>
           <div className="modal-msg-comments">
-            <Input comment modalInput onSubmit postId={idPost}/>
+            <Input comment modalInput onSubmit postId={idPost} />
           </div>
         </div>
       </Modal>
