@@ -4,7 +4,6 @@ import {avaURL} from "../../api/AxiosAPI";
 
 
 const Userpostcomment = ({comments}) => {
-
   return (
       <div>
         { comments.map((comment, i)=>{
