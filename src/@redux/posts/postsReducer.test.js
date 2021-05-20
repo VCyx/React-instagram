@@ -7,7 +7,6 @@ describe("Testing postReducer.js", () => {
       posts: [],
       isLoading: true,
     };
-
     const action = {
       type: LOAD_MAIN_POSTS,
       payload: [

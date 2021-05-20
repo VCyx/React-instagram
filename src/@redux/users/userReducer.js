@@ -1,5 +1,4 @@
 import {
-  LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   GET_USER,
   SET_USER_LOGIN,
@@ -12,7 +11,7 @@ import {
 const initialState = {
   users: {
     data: [],
-    isLoading: true,
+    isLoading: false,
     posts: [],
     isAuth: localStorage.getItem("token") || false,
   },
@@ -27,8 +26,6 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOAD_USER_REQUEST:
-      return { ...state, users: { ...state.users, isLoading: action.payload } };
     case LOAD_USER_SUCCESS:
       return { ...state, users: { ...state.users, data: action.payload } };
     case GET_USER:
