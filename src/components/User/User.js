@@ -5,14 +5,9 @@ import MenuButton from "../MenuButton/MenuButton";
 import { avaURL } from "../../api/AxiosAPI";
 import Button from "../Button/Button";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 const User = ({ nick, avatar, userId }) => {
   const history = useHistory();
-  const userSubscribedUsers = useSelector(
-    (state) => state.userReducer.user.subscribed
-  );
-  console.log("user subs", userSubscribedUsers);
 
   return (
     <>
