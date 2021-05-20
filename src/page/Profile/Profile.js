@@ -14,7 +14,7 @@ import { getUserPage } from "../../@redux/users/operation";
 import BrokenLine from "../../components/BrokenLine/BrokenLine";
 import User from "../../components/User/User";
 import Input from "../../components/Input/Input";
-import Userpostcomment from "../../components/UserPostComment/Userpostcomment";
+import UserPostcomment from "../../components/UserPostComment/Userpostcomment";
 
 const Profile = () => {
   const paramsUrl = useParams();
@@ -119,9 +119,7 @@ const Profile = () => {
             <hr className="modal-msg-hr" />
           </div>
           <div className="modal-msg-posts">
-
-            {modalActive && <Userpostcomment comments={comment} />}
-
+            {modalActive && <UserPostcomment comments={comment} />}
           </div>
           <div className="modal-msg-like">
             <Icon type="like" color="#ABB2C1" className={styles.iconComment} />
