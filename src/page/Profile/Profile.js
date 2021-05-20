@@ -15,14 +15,14 @@ import BrokenLine from "../../components/BrokenLine/BrokenLine";
 import User from "../../components/User/User";
 import Input from "../../components/Input/Input";
 import UserPostcomment from "../../components/UserPostComment/Userpostcomment";
-import {saveLocalComment} from "../../@redux/users/action";
+import { saveLocalComment } from "../../@redux/users/action";
 
 const Profile = () => {
   const paramsUrl = useParams();
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.userReducer.user.data);
- // const comments = useSelector((store) => store.userReducer.user.сomments);
+  // const comments = useSelector((store) => store.userReducer.user.сomments);
 
   const { nick, avatar, userId } = user;
 
@@ -63,8 +63,6 @@ const Profile = () => {
     loadPage();
   }, [page, paramsUrl.name]);
 
-
-  console.log(comment)
   return (
     <div className={styles.container}>
       <User nick={nick} avatar={avatar} userId={userId} />
@@ -139,7 +137,7 @@ const Profile = () => {
             <span className={styles.iconCommentCountModal}>{showComments}</span>
           </div>
           <div className="modal-msg-comments">
-            <Input comment modalInput onSubmit postId={idPost}/>
+            <Input comment modalInput onSubmit postId={idPost} />
           </div>
         </div>
       </Modal>

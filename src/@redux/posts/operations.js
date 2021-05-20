@@ -14,7 +14,8 @@ export const getPosts = () => (dispatch) => {
 
 export const getPostsMain = async (page, limit = 3) => {
   return await fetch(
-    `http://176.105.100.114:7000/api/post/?limit=${limit}&page=${page}`
+    `http://176.105.100.114:7000/api/post/?limit=${limit}&page=${page}`,
+    { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
   )
     .then((res) => res.json())
     .then((res) => res.rows);
