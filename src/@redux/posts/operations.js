@@ -5,6 +5,7 @@ import { saveLocalComment } from "../users/action";
 const URL_GET_POSTS = `http://176.105.100.114:7000/api/post`;
 const TOGGLE_LIKE = `http://176.105.100.114:7000/api/post/like/`;
 const ADD_COMMENT = `http://176.105.100.114:7000/api/post/comment/`;
+// process.env.REACT_APP_SDADSA
 
 export const getPosts = () => (dispatch) => {
   return axios(URL_GET_POSTS).then((res) => {
