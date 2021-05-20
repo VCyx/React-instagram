@@ -3,7 +3,7 @@ import Icon from "../Icon/Icon";
 import styles from "./IconWithCount.module.scss";
 import classNames from "classnames";
 
-const IconWithCount = ({ count, type, onClick, filled, className }) => {
+const IconWithCount = ({ count, type, onClick, filled, color, className }) => {
   return (
     <div className={classNames(styles.container, className)}>
       <Icon
@@ -11,6 +11,7 @@ const IconWithCount = ({ count, type, onClick, filled, className }) => {
         type={type}
         onClick={onClick}
         filled={filled}
+        color={color}
       />
       <p>{count}</p>
     </div>

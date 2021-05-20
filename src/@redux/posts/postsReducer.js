@@ -8,11 +8,13 @@ const initialState = {
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_MAIN_POSTS:
+      // todo fix bug with double pages on return back
       return {
         ...state,
         posts: state.posts.concat(action.payload),
         isLoading: false,
       };
+
     case ADD_POST_COMMENT:
       const posts = state.posts;
       const newPosts = posts.map((post) => {

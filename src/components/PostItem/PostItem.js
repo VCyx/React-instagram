@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./PostItem.module.scss";
 import IconWithCount from "../IconWithCount/IconWithCount";
 import Comments from "../Comments/Comments";
@@ -37,6 +37,7 @@ const PostItem = ({ id, name, picture, likes, comments, nickname }) => {
         <IconWithCount
           className={styles.footerIconsItem}
           type="like"
+          color="#3772FF"
           filled={isLiked}
           count={likes.length}
         />
