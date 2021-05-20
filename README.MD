@@ -20,7 +20,7 @@ Frontend построен на React. Backend на Node.js.
 #Сделан по ТЗ:
 (https://gitlab.com/dan-it/groups/fe22/-/tree/master/react/step-project-instagram)
 
-#Дизайн:
+#Основной дизайн:
 (https://www.figma.com/file/uY03Tzj3CUEM3MU26cup1j/Untitled?node-id=8%3A276)
 
 #Backend
