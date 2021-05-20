@@ -1,5 +1,5 @@
 import axios from "axios";
-import { addPostComment, getPostsAll } from "./actions";
+import { addPostComment, getPostsAll, updatePostLikes } from "./actions";
 import { saveLocalComment } from "../users/action";
 
 const URL_GET_POSTS = `http://176.105.100.114:7000/api/post`;
@@ -20,7 +20,7 @@ export const getPostsMain = async (page, limit = 3) => {
     .then((res) => res.rows);
 };
 
-export const toggleLikePost = (postID) => {
+export const toggleLikePost = (postID) => (dispatch) => {
   axios
     .put(
       TOGGLE_LIKE + postID,
@@ -28,7 +28,8 @@ export const toggleLikePost = (postID) => {
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     )
     .then((res) => {
-      console.log(res.data);
+      // console.log("res like", res.data);
+      dispatch(updatePostLikes(postID, res.data));
     });
 };
 
@@ -41,7 +42,7 @@ export const addComment = ({ postID, comment }) => (dispatch) => {
     )
     .then((res) => {
       console.log("comment added", res.data);
-      dispatch(saveLocalComment(res.data));
+      dispatch(saveLocalComment(res.data)); // todo under question
       dispatch(addPostComment(postID, res.data));
     })
     .catch((er) => {

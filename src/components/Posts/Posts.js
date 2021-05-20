@@ -21,7 +21,7 @@ const Posts = ({ posts }) => {
                 id={post.id}
                 name={post.name}
                 picture={post.img}
-                likes={post.like}
+                likes={post.likes}
                 comments={post.commentaries}
                 nickname={post.nickname}
               />
