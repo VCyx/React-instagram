@@ -1,4 +1,4 @@
-import { ADD_POST_COMMENT, LOAD_MAIN_POSTS } from "./types";
+import { ADD_POST_COMMENT, LOAD_MAIN_POSTS, UPDATE_POST_LIKES } from "./types";
 
 const initialState = {
   posts: [],
@@ -25,6 +25,19 @@ const postsReducer = (state = initialState, action) => {
         }
       });
       return { ...state, posts: newPosts };
+    case UPDATE_POST_LIKES: {
+      const posts = state.posts;
+      const newPosts = posts.map((post) => {
+        if (post.id === action.payload.postID) {
+          const newPost = posts[posts.indexOf(post)];
+          newPost.likes = action.payload.data;
+          return newPost;
+        } else {
+          return post;
+        }
+      });
+      return { ...state, posts: newPosts };
+    }
 
     default:
       return state;
