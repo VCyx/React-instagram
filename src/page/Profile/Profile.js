@@ -15,12 +15,15 @@ import BrokenLine from "../../components/BrokenLine/BrokenLine";
 import User from "../../components/User/User";
 import Input from "../../components/Input/Input";
 import UserPostcomment from "../../components/UserPostComment/Userpostcomment";
+import {saveLocalComment} from "../../@redux/users/action";
 
 const Profile = () => {
   const paramsUrl = useParams();
   const dispatch = useDispatch();
 
   const user = useSelector((store) => store.userReducer.user.data);
+ // const comments = useSelector((store) => store.userReducer.user.сomments);
+
   const { nick, avatar, userId } = user;
 
   const [modalActive, setModalActive] = useState(false);
@@ -28,6 +31,7 @@ const Profile = () => {
   const [showLike, setShowLike] = useState();
   const [showComments, setShowComments] = useState();
   const [comment, setComment] = useState();
+  const [idPost, setIdPost] = useState();
 
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
@@ -59,6 +63,8 @@ const Profile = () => {
     loadPage();
   }, [page, paramsUrl.name]);
 
+
+  console.log(comment)
   return (
     <div className={styles.container}>
       <User nick={nick} avatar={avatar} userId={userId} />
@@ -78,6 +84,7 @@ const Profile = () => {
                   setShowLike(post.like);
                   setShowComments(Object.keys(post.commentaries).length);
                   setComment(post.commentaries);
+                  setIdPost(post.id);
                 }}
               >
                 <div className={styles.imageHover}>
@@ -132,7 +139,7 @@ const Profile = () => {
             <span className={styles.iconCommentCountModal}>{showComments}</span>
           </div>
           <div className="modal-msg-comments">
-            <Input comment modalInput />
+            <Input comment modalInput onSubmit postId={idPost}/>
           </div>
         </div>
       </Modal>
