@@ -1,4 +1,9 @@
-import { ADD_POST_COMMENT, LOAD_MAIN_POSTS, UPDATE_POST_LIKES } from "./types";
+import {
+  ADD_POST_COMMENT,
+  CLEAR_POSTS,
+  LOAD_MAIN_POSTS,
+  UPDATE_POST_LIKES,
+} from "./types";
 
 const initialState = {
   posts: [],
@@ -8,7 +13,6 @@ const initialState = {
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_MAIN_POSTS:
-      // todo fix bug with double pages on return back
       return {
         ...state,
         posts: state.posts.concat(action.payload),
@@ -40,6 +44,8 @@ const postsReducer = (state = initialState, action) => {
       });
       return { ...state, posts: newPosts };
     }
+    case CLEAR_POSTS:
+      return { ...state, posts: [] };
 
     default:
       return state;
