@@ -4,6 +4,8 @@ import styles from "./Button.module.scss";
 import { toggleSubscribe } from "../../@redux/users/operation";
 import { useDispatch, useSelector } from "react-redux";
 import classNames from "classnames";
+import { getPostsMain } from "../../@redux/posts/operations";
+import { getPostsAll } from "../../@redux/posts/actions";
 
 const Button = ({
   children,
@@ -28,6 +30,7 @@ const Button = ({
   const toggleStatus = (e) => {
     e.stopPropagation();
     dispatch(toggleSubscribe(subscribeUserID));
+
     e.target.classList.toggle(styles["btnSignIn"]);
     activeSubscribe
       ? (e.target.textContent = "Відписатися")

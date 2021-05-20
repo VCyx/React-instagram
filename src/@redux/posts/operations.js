@@ -30,7 +30,6 @@ export const toggleLikePost = (postID) => (dispatch) => {
       { headers: { Authorization: `Bearer ${localStorage.getItem("token")}` } }
     )
     .then((res) => {
-      // console.log("res like", res.data);
       dispatch(updatePostLikes(postID, res.data));
     });
 };

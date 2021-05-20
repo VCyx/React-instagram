@@ -6,6 +6,7 @@ import MainAside from "../../components/MainAside/MainAside";
 import { getPostsMain } from "../../@redux/posts/operations";
 import { clearPosts, getPostsAll } from "../../@redux/posts/actions";
 import { getUserData } from "../../@redux/users/operation";
+import Loading from "../../components/Loading/Loading";
 
 const Main = () => {
   const dispatch = useDispatch();
@@ -13,7 +14,7 @@ const Main = () => {
   const [page, setPage] = useState(1);
   const loading = useSelector((state) => state.postsReducer.isLoading);
   const posts = useSelector((state) => state.postsReducer.posts);
-  // console.log("posts", posts);
+  console.log("posts", posts);
 
   window.onscroll = () => {
     if (
@@ -40,7 +41,7 @@ const Main = () => {
   }, [page]);
 
   if (loading) {
-    return <h3>Loading...</h3>;
+    return <Loading loading={loading} />;
   }
 
   return (

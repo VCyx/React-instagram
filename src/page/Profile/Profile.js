@@ -10,12 +10,12 @@ import PropTypes from "prop-types";
 import Modal from "../../components/Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getUserPage } from "../../@redux/users/operation";
+import { getUserData, getUserPage } from "../../@redux/users/operation";
 import BrokenLine from "../../components/BrokenLine/BrokenLine";
 import User from "../../components/User/User";
 import Input from "../../components/Input/Input";
 import UserPostcomment from "../../components/UserPostComment/Userpostcomment";
-import { saveLocalComment } from "../../@redux/users/action";
+import { toggleLikePost } from "../../@redux/posts/operations";
 
 const Profile = () => {
   const paramsUrl = useParams();
@@ -28,7 +28,7 @@ const Profile = () => {
 
   const [modalActive, setModalActive] = useState(false);
   const [showImg, setShowImg] = useState();
-  const [showLike, setShowLike] = useState();
+  const [showLike, setShowLike] = useState([]);
 
   const [showComments, setShowComments] = useState();
   const [comment, setComment] = useState();
@@ -37,8 +37,17 @@ const Profile = () => {
   const [page, setPage] = useState(1);
   const [posts, setPosts] = useState([]);
 
-  console.log("posts", posts);
+  // const mainUserId = useSelector(
+  //   (state) => state.userReducer.user.mainUser.userId
+  // );
+  // const isLiked = showLike.some((likeId) => likeId.like === mainUserId);
+
+  // console.log("posts", posts);
   const [loading, setLoading] = useState(false);
+
+  const toggleLike = (postID) => {
+    dispatch(toggleLikePost(postID));
+  };
 
   window.onscroll = () => {
     if (
@@ -55,6 +64,7 @@ const Profile = () => {
 
   useEffect(() => {
     setLoading(true);
+    dispatch(getUserData());
   }, []);
 
   useEffect(() => {
@@ -82,7 +92,7 @@ const Profile = () => {
                 onClick={() => {
                   setModalActive(true);
                   setShowImg(post.img);
-                  setShowLike(post.like);
+                  setShowLike(post.likes);
                   setShowComments(Object.keys(post.commentaries).length);
                   setComment(post.commentaries);
                   setIdPost(post.id);
@@ -130,8 +140,16 @@ const Profile = () => {
             {modalActive && <UserPostcomment comments={comment} />}
           </div>
           <div className="modal-msg-like">
-            <Icon type="like" color="#ABB2C1" className={styles.iconComment} />
-            <span className={styles.iconCommentCountModal}>{showLike}</span>
+            <Icon
+              type="like"
+              filled={false}
+              onClick={toggleLike(idPost)}
+              color="#ABB2C1"
+              className={styles.iconComment}
+            />
+            <span className={styles.iconCommentCountModal}>
+              {showLike.length}
+            </span>
             <Icon
               className={styles.iconComment}
               type="comment"
