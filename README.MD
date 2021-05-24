@@ -1,4 +1,4 @@
-#Описание проекта:
+# Описание проекта:
 Аналог Instagram.
 Frontend построен на React. Backend на Node.js.
 
